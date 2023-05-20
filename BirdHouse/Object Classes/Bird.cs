@@ -1,7 +1,9 @@
 ﻿namespace BirdHouse
 {
     public enum Species { American, European, Australian }
-    public enum SubSpecies { North, Center, South, West, East, Beach }
+    public enum SubSpeciesAM { North, Center, South }
+    public enum SubSpeciesEU {West, East}
+    public enum SubSpeciesAU { Center, Beach}
 
 
     internal class Bird

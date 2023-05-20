@@ -39,6 +39,7 @@ namespace BirdHouse.Forms
                 MessageBox.Show("Enter Sub Species!");
                 return;
             }
+            
             string? serialNumber = serialNumberBoxTextBox.Text;
             if (serialNumber.Length > 0)
             {
@@ -140,15 +141,16 @@ namespace BirdHouse.Forms
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            UpdateSubSpeciesComboBox();
         }
 
         private void AddBirdForm_Load(object sender, EventArgs e)
         {
             var SpeciesString = Enum.GetNames(typeof(Species));
             kindComboBox.Items.AddRange(SpeciesString);
-            var SubSpeciesString = Enum.GetNames(typeof(SubSpecies));
-            subKindComboBox.Items.AddRange(SubSpeciesString);
+            kindComboBox.SelectedIndex = 0; // Select the first item by default
+            UpdateSubSpeciesComboBox();
+
 
         }
 
@@ -180,6 +182,33 @@ namespace BirdHouse.Forms
         private void hatchDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+        private void UpdateSubSpeciesComboBox()
+        {
+            subKindComboBox.Items.Clear();
+
+            if (kindComboBox.SelectedItem == null)
+                return;
+
+            string selectedKind = kindComboBox.SelectedItem.ToString();
+
+            switch (selectedKind)
+            {
+                case "American":
+                    var subSpeciesAMString = Enum.GetNames(typeof(SubSpeciesAM));
+                    subKindComboBox.Items.AddRange(subSpeciesAMString);
+                    break;
+                case "European":
+                    var subSpeciesEUString = Enum.GetNames(typeof(SubSpeciesEU));
+                    subKindComboBox.Items.AddRange(subSpeciesEUString);
+                    break;
+                case "Australian":
+                    var subSpeciesAUString = Enum.GetNames(typeof(SubSpeciesAU));
+                    subKindComboBox.Items.AddRange(subSpeciesAUString);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
