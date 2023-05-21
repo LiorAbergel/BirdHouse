@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BirdHouse
+﻿namespace BirdHouse
 {
     public enum Material { Steel, Wood, Plastic }
 
     internal class Cage
     {
-        private String serial;
-        string length, width, height;
+        private string serial;
+        private string length, width, height;
         private string material;
+        private List<Bird> birds;
 
         public Cage(string serial, string length, string width, string height, string material)
         {
@@ -21,6 +16,8 @@ namespace BirdHouse
             this.width = width;
             this.height = height;
             this.material = material;
+            birds = new List<Bird>();
+
         }
         public string Serial
         {
@@ -40,12 +37,25 @@ namespace BirdHouse
         public string Height
         {
             get { return height; }
-            set { height = value; }
+            set { height = value    ; }
         }
         public string Material
         {
             get { return material; }
             set { material = value; }
+        }
+        public List<Bird>? Birds
+        {
+            get { return birds; }
+        }
+        public bool AddBird(Bird bird)
+        {
+            if (bird != null)
+            {
+                birds.Add(bird);
+                return true;
+            }
+            return false;
         }
     }
 }

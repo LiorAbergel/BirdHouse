@@ -40,76 +40,69 @@
             // 
             // LogInButton
             // 
-            LogInButton.Location = new Point(408, 361);
-            LogInButton.Margin = new Padding(4);
+            LogInButton.Location = new Point(314, 282);
             LogInButton.Name = "LogInButton";
-            LogInButton.Size = new Size(145, 45);
+            LogInButton.Size = new Size(112, 35);
             LogInButton.TabIndex = 0;
             LogInButton.Text = "Log In";
             LogInButton.UseVisualStyleBackColor = true;
-            LogInButton.Click += LogInButton_Click_2;
+            LogInButton.Click += LogInButton_Click;
             // 
             // passwordBox
             // 
-            passwordBox.Location = new Point(408, 314);
-            passwordBox.Margin = new Padding(4);
+            passwordBox.Location = new Point(314, 245);
             passwordBox.Name = "passwordBox";
-            passwordBox.Size = new Size(305, 39);
+            passwordBox.Size = new Size(236, 31);
             passwordBox.TabIndex = 1;
             // 
             // userNameBox
             // 
-            userNameBox.Location = new Point(408, 267);
-            userNameBox.Margin = new Padding(4);
+            userNameBox.Location = new Point(314, 209);
             userNameBox.Name = "userNameBox";
-            userNameBox.Size = new Size(305, 39);
+            userNameBox.Size = new Size(236, 31);
             userNameBox.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(260, 274);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(200, 214);
             label1.Name = "label1";
-            label1.Size = new Size(144, 32);
+            label1.Size = new Size(108, 25);
             label1.TabIndex = 3;
             label1.Text = "User Name :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(269, 321);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(207, 251);
             label2.Name = "label2";
-            label2.Size = new Size(130, 32);
+            label2.Size = new Size(101, 25);
             label2.TabIndex = 4;
             label2.Text = "Password : ";
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(228, 15);
-            pictureBox1.Margin = new Padding(4);
+            pictureBox1.Location = new Point(175, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(646, 222);
+            pictureBox1.Size = new Size(497, 173);
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
             // registerButton
             // 
-            registerButton.Location = new Point(561, 361);
-            registerButton.Margin = new Padding(4);
+            registerButton.Location = new Point(432, 282);
             registerButton.Name = "registerButton";
-            registerButton.Size = new Size(145, 45);
+            registerButton.Size = new Size(112, 35);
             registerButton.TabIndex = 6;
             registerButton.Text = "Register";
             registerButton.UseVisualStyleBackColor = true;
-            registerButton.Click += registerButton_Click_1;
+            registerButton.Click += registerButton_Click;
             // 
             // LogInForm
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1127, 428);
+            ClientSize = new Size(867, 334);
             Controls.Add(registerButton);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
@@ -117,9 +110,9 @@
             Controls.Add(userNameBox);
             Controls.Add(passwordBox);
             Controls.Add(LogInButton);
-            Margin = new Padding(4);
             Name = "LogInForm";
             Text = "Log In";
+            Load += LogInForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

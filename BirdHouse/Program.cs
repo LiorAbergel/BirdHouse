@@ -10,8 +10,6 @@ namespace BirdHouse
         /// </summary>
         /// 
 
-        public static Excel.Application? xlApp;
-
         [STAThread]
         static void Main()
         {
@@ -21,30 +19,9 @@ namespace BirdHouse
             // before starting application , we check if Microsoft Excel is installed
             // if not, the application can't start22
 
-        
-
-        xlApp = new Microsoft.Office.Interop.Excel.Application();
-            if (xlApp == null)
-            {
-                MessageBox.Show("Excel is not properly installed!!");
-                return;
-            }
-
-            else
-            {
-                xlApp.Quit();
-                Marshal.ReleaseComObject(xlApp);
-
-                ApplicationConfiguration.Initialize();
-                Application.Run(new LogInForm(new UsersExcel()));
-            }
-            
-
-            
-
-
-
-
+            ApplicationConfiguration.Initialize();
+            Application.Run(new LogInForm());
+     
         }
     }
 }

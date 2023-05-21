@@ -1,89 +1,99 @@
-using System.Runtime.InteropServices;
-using Excel = Microsoft.Office.Interop.Excel;
+using OfficeOpenXml;
+
 
 
 namespace BirdHouse
 {
     public partial class LogInForm : Form
     {
-        private IExcelService _excelService;
-        private Excel.Workbook _workbook;
-
-        public LogInForm(IExcelService excelService)
+        string usersFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\users.xls";
+        public LogInForm()
         {
             InitializeComponent();
-            _excelService = excelService;
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            if (!File.Exists(usersFilePath))
+            {
+                // Create a new Excel package
+                using (var usersFile = new ExcelPackage())
+                {
+                    // Add a new worksheet to the package
+                    ExcelWorksheet worksheet = usersFile.Workbook.Worksheets.Add("Users");
+
+                    // Customize the worksheet as needed
+                    worksheet.Cells["A1"].Value = "id";
+                    worksheet.Cells["B1"].Value = "username";
+                    worksheet.Cells["C1"].Value = "password";
+
+                    // Save the package to the specified file path
+                    usersFile.SaveAs(new FileInfo(usersFilePath));
+                }
+
+            }
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
+            // finding the path to the data file
+            using (var usersFile = new ExcelPackage(new FileInfo(usersFilePath)))
+            {
+                // Get the first worksheet
+                ExcelWorksheet worksheet = usersFile.Workbook.Worksheets[0];
 
+                // Get the dimension of the worksheet (the range of cells containing data)
+                ExcelCellAddress startCell = worksheet.Dimension.Start;
+                ExcelCellAddress endCell = worksheet.Dimension.End;
+
+                ExcelRangeBase range = worksheet.Cells[2, 1, worksheet.Dimension.End.Row, worksheet.Dimension.End.Column];
+
+                // TODO : add input checking
+                string userName = userNameBox.Text;
+                string password = passwordBox.Text;
+
+                bool foundUser = false;
+
+                foreach (ExcelRangeBase cell in range)
+                {
+                    if (cell.Value != null && cell.Value.ToString() == userName)
+                    {
+                        ExcelRange passwordCell = worksheet.Cells[cell.Start.Row, cell.Start.Column + 1]; // Get the corresponding password cell
+                        if (passwordCell.Value != null && passwordCell.Value.ToString() == password)
+                        {
+                            // Username and password found
+                            foundUser = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!foundUser) {
+                    MessageBox.Show("Username or passwrod not valid !");
+                    return;
+                }
+
+                MainForm mainForm = new MainForm();
+                mainForm.ShowDialog();
+            }
         }
 
         private void LogInForm_Load(object sender, EventArgs e)
         {
             // this line adds an event handler to detect this form closing
-            this.FormClosing += new FormClosingEventHandler(this.LogInForm_FormClosing);
-        }
-
-        private void registerButton_Click(object sender, EventArgs e)
-        {
-
+            FormClosing += new FormClosingEventHandler(LogInForm_FormClosing);
         }
 
         private void LogInForm_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            // this method is activated when the form is closed , it closes the excel file 
-            if (_workbook != null)
-            {
-                _excelService.CloseAll(_workbook);
-            }
+
         }
 
-        private void LogInButton_Click_1(object sender, EventArgs e)
+        private void registerButton_Click(object sender, EventArgs e)
         {
-           
-        }
-
-        private void registerButton_Click_1(object sender, EventArgs e)
-        {
-
-            RegisterForm registerForm = new RegisterForm(_excelService);
+            RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
         }
 
-        private void LogInButton_Click_2(object sender, EventArgs e)
-        {
-            // finding the path to the data file
-            string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            string filePath = projectPath + "\\users.xls";
-
-            _workbook = _excelService.OpenWorkbook(filePath);
-            Excel.Worksheet worksheet = _workbook.Worksheets[1];
-
-            try
-            {
-                // Search for the user's credentials
-                for (int i = 2; i <= worksheet.UsedRange.Rows.Count; i++)
-                {
-                    //add input check
-                    string? username = worksheet.Cells[i, 2].Value?.ToString();
-                    string? password = worksheet.Cells[i, 3].Value?.ToString();
-
-                    if (userNameBox.Text == username && passwordBox.Text == password)
-                    {
-                        MainForm mainForm = new MainForm();
-                        mainForm.Show();
-                        return;
-                    }
-                }
-                MessageBox.Show("Invalid username or password.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
-        }
     }
 }
 

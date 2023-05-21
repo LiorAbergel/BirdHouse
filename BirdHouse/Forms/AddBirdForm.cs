@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-
-namespace BirdHouse.Forms
+﻿namespace BirdHouse.Forms
 {
     public partial class AddBirdForm : Form
     {
@@ -150,8 +138,6 @@ namespace BirdHouse.Forms
             kindComboBox.Items.AddRange(SpeciesString);
             kindComboBox.SelectedIndex = 0; // Select the first item by default
             UpdateSubSpeciesComboBox();
-
-
         }
 
         private void serialNumberBoxTextBox_TextChanged(object sender, EventArgs e)

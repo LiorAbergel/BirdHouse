@@ -1,10 +1,9 @@
 ﻿namespace BirdHouse
 {
-    public enum Species { American, European, Australian }
     public enum SubSpeciesAM { North, Center, South }
-    public enum SubSpeciesEU {West, East}
+    public enum SubSpeciesEU { West, East}
     public enum SubSpeciesAU { Center, Beach}
-
+    public enum Species { American = 1, European = 2, Australian = 3}
 
     internal class Bird
     {
@@ -28,7 +27,7 @@
         //    this.fatherSerial = fatherSerial;
         //    this.motherSerial = motherSerial;
         //}
-        public Bird(string serial, string specie, string subSpecies, DateTime hatchDate, string gender, string cageNum, string fatherSerial, string motherSerial)
+        public Bird(string serial, string specie, string subsSpecies, DateTime hatchDate, string gender, string cageNum, string fatherSerial, string motherSerial)
         {
             this.serial = serial;
             this.specie = specie;
