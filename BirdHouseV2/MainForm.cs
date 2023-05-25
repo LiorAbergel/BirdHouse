@@ -208,25 +208,54 @@ namespace BirdHouseV2
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            string catagory = categoryComboBox.SelectedItem as string;
-            if (catagory == "Material")
+            if (cageRadioButton.Checked)
             {
-                string subCatagory = subCategoryComboBox.SelectedItem as string;
-                Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                string catagory = categoryComboBox.SelectedItem as string;
+                if (catagory == "Material")
+                {
+                    string subCatagory = subCategoryComboBox.SelectedItem as string;
+                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                }
+                if (catagory == "Serial")
+                {
+                    string Serial = subCategoryComboBox.Text;
+                    Cages = SqliteDataAccess.searchCages(Serial, catagory);
+                }
+                CageGridView.DataSource = Cages;
             }
-            CageGridView.DataSource = Cages;
-        }
+
+            if (birdRadioButton.Checked)
+            {
+                List<Bird> birds= new List<Bird>();
+                string catagory = categoryComboBox.SelectedItem as string;
+                if (catagory == "Species")
+                {
+                    string subCatagory = subCategoryComboBox.SelectedItem as string;
+                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                }
+                if (catagory == "Serial")
+                {
+                    string Serial = subCategoryComboBox.Text;
+                    birds = SqliteDataAccess.searchBirds(Serial, catagory);
+                }
+                if (catagory == "Hatch Date")
+                {
+                    string subCatagory = subCategoryComboBox.SelectedItem as string;
+                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                }
+
+                if (catagory == "Gender")
+                {
+                    string subCatagory = subCategoryComboBox.SelectedItem as string;
+                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                }
 
 
-        private void WireUpCageSearchList()
-        {
-            string catagory = categoryComboBox.SelectedItem as string;
-            if(catagory == "Material")
-            {
-                string subCatagory = subCategoryComboBox.SelectedItem as string;
-                Cages = SqliteDataAccess.searchCages(catagory, subCatagory);
+                CageGridView.DataSource = birds;
             }
-            CageGridView.DataSource = Cages;
+
+
         }
+
     }
 }

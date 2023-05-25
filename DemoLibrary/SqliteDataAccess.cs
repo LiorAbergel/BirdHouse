@@ -54,14 +54,16 @@ namespace DemoLibrary
             }
         }
 
-        public static List<Bird> searchBirds(string cageSerial)
+        public static List<Bird> searchBirds(string filter, string columnName)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
 
                 var parameters = new DynamicParameters();
-                parameters.Add("@cageSerial", cageSerial); // Add the ownerID parameter
-                var output = cnn.Query<Bird>($"select * from Birds where cageSerial = @cageSerial", parameters);
+                parameters.Add("@filter", filter); // Add the filter parameter
+
+                string query = $"SELECT * FROM Birds WHERE {columnName} = @filter";
+                var output = cnn.Query<Bird>(query, parameters);
                 return output.ToList();
             }
         }
