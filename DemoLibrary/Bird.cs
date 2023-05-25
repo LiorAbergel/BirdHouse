@@ -11,86 +11,70 @@ namespace DemoLibrary
     public enum SubSpeciesAU { Center, Beach }
     public enum Species { American, European, Australian }
 
-    internal class Bird
+    public class Bird
     {
-        private string serial;
-        private string specie;
-        private string subsSpecies;
-        private DateTime hatchDate;
-        private string gender;
-        private string cageSerial;
-        private string fatherSerial;
-        private string motherSerial;
 
-        //public Bird(string serial, Species specie, SubSpecies subSpecies, DateTime hatchDate, string gender, string cageNum, string fatherSerial, string motherSerial)
-        //{
-        //    this.serial = serial;
-        //    this.specie = specie;
-        //    this.subsSpecies = subSpecies;
-        //    this.hatchDate = hatchDate;
-        //    this.gender = gender;
-        //    this.cageNum = cageNum;
-        //    this.fatherSerial = fatherSerial;
-        //    this.motherSerial = motherSerial;
-        //}
-        public Bird(string serial, string specie, string subsSpecies, DateTime hatchDate, string gender, string cageNum, string fatherSerial, string motherSerial)
+
+
+
+        public Bird(string serial, string specie, string subSpecies, string hatchDate, string gender, string cageSerial, string fatherSerial, string motherSerial)
         {
             this.serial = serial;
             this.specie = specie;
-            this.subsSpecies = subSpecies;
+            this.subSpecies = subSpecies;
             this.hatchDate = hatchDate;
             this.gender = gender;
-            this.cageSerial = cageNum;
+            this.cageSerial = cageSerial;
             this.fatherSerial = fatherSerial;
             this.motherSerial = motherSerial;
         }
 
-        public string Serial
+        public string serial
         {
-            get { return serial; }
-            set { serial = value; }
+            get;
+            set;
         }
 
-        public string Specie
+        public string specie
         {
-            get { return specie; }
-            set { specie = value; }
+            get;
+            set;
         }
 
         public string subSpecies
         {
-            get { return subSpecies; }
-            set { subSpecies = value; }
+            get;
+            set;
         }
 
-        public DateTime HatchDate
+        public string hatchDate
         {
-            get { return hatchDate; }
-            set { hatchDate = value; }
+            get;
+            set;
         }
 
-        public string Gender
+        public string gender
         {
-            get { return gender; }
-            set { gender = value; }
+            get;
+            set;
         }
 
-        public string CageNum
+        public string cageSerial
         {
-            get { return cageSerial; }
-            set { cageSerial = value; }
+            get;
+            set; 
         }
 
-        public string FatherSerial
+        public string fatherSerial
         {
-            get { return fatherSerial; }
-            set { fatherSerial = value; }
+        get;
+        set;
         }
 
-        public string MotherSerial
+        public string motherSerial
         {
-            get { return motherSerial; }
-            set { motherSerial = value; }
+        get;
+        set;
         }
 
     }

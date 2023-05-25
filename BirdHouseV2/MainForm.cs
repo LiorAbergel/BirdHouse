@@ -10,6 +10,7 @@ namespace BirdHouseV2
     {
         List<Cage> Cages = new List<Cage>();
         string ownerID;
+        string cageSerial;
 
         public MainForm(string id)
         {
@@ -192,6 +193,40 @@ namespace BirdHouseV2
 
         private void subCategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
+        }
+
+        private void addBirdButton_Click(object sender, EventArgs e)
+        {
+            var birdsForm = new BirdsForm(cageSerial);
+            birdsForm.ShowDialog();
+        }
+
+        private void CageGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            cageSerial = CageGridView.SelectedRows[0].Cells[0].Value.ToString();
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string catagory = categoryComboBox.SelectedItem as string;
+            if (catagory == "Material")
+            {
+                string subCatagory = subCategoryComboBox.SelectedItem as string;
+                Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+            }
+            CageGridView.DataSource = Cages;
+        }
+
+
+        private void WireUpCageSearchList()
+        {
+            string catagory = categoryComboBox.SelectedItem as string;
+            if(catagory == "Material")
+            {
+                string subCatagory = subCategoryComboBox.SelectedItem as string;
+                Cages = SqliteDataAccess.searchCages(catagory, subCatagory);
+            }
+            CageGridView.DataSource = Cages;
         }
     }
 }
