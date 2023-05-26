@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 
 namespace DemoLibrary
@@ -93,7 +94,11 @@ namespace DemoLibrary
 
         private static string LoadConnectionString(string id = "Default") {
 
-            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+            var connectionStringSettings = ConfigurationManager.ConnectionStrings[id];
+            var binFolderPath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+            var parentFolderPath = Directory.GetParent(binFolderPath).FullName;
+            var connectionString = connectionStringSettings.ConnectionString.Replace("|DataDirectory|", parentFolderPath);
+            return connectionString;
         }
     }
 }
