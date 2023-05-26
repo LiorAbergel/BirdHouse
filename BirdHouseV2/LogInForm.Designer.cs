@@ -31,90 +31,18 @@ namespace BirdHouseV2
         /// </summary>
         private void InitializeComponent()
         {
-            this.LogInButton = new System.Windows.Forms.Button();
-            this.passwordBox = new System.Windows.Forms.TextBox();
-            this.userNameBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.registerButton = new System.Windows.Forms.Button();
             this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.registerButton = new System.Windows.Forms.Button();
+            this.LogInButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.userNameBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // LogInButton
-            // 
-            this.LogInButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LogInButton.BackColor = System.Drawing.Color.White;
-            this.LogInButton.Location = new System.Drawing.Point(47, 367);
-            this.LogInButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.LogInButton.Name = "LogInButton";
-            this.LogInButton.Size = new System.Drawing.Size(155, 70);
-            this.LogInButton.TabIndex = 0;
-            this.LogInButton.Text = "Log In";
-            this.LogInButton.UseVisualStyleBackColor = false;
-            this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
-            // 
-            // passwordBox
-            // 
-            this.passwordBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passwordBox.BackColor = System.Drawing.Color.MistyRose;
-            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(138, 287);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.passwordBox.Multiline = true;
-            this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(259, 45);
-            this.passwordBox.TabIndex = 1;
-            this.passwordBox.UseSystemPasswordChar = true;
-            // 
-            // userNameBox
-            // 
-            this.userNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.userNameBox.BackColor = System.Drawing.Color.Cornsilk;
-            this.userNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.userNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameBox.Location = new System.Drawing.Point(138, 204);
-            this.userNameBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.userNameBox.Multiline = true;
-            this.userNameBox.Name = "userNameBox";
-            this.userNameBox.Size = new System.Drawing.Size(259, 45);
-            this.userNameBox.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 204);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "User Name :";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 290);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password : ";
-            // 
-            // registerButton
-            // 
-            this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.registerButton.Location = new System.Drawing.Point(226, 367);
-            this.registerButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(155, 70);
-            this.registerButton.TabIndex = 6;
-            this.registerButton.Text = "Register";
-            this.registerButton.UseVisualStyleBackColor = true;
             // 
             // sqLiteCommandBuilder1
             // 
@@ -123,6 +51,9 @@ namespace BirdHouseV2
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.BackgroundImage = global::BirdHouseV2.Properties.Resources.background_1;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.registerButton);
             this.panel1.Controls.Add(this.LogInButton);
@@ -131,14 +62,99 @@ namespace BirdHouseV2
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.userNameBox);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(461, 549);
+            this.panel1.Size = new System.Drawing.Size(461, 540);
             this.panel1.TabIndex = 7;
+            // 
+            // registerButton
+            // 
+            this.registerButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.registerButton.BackColor = System.Drawing.Color.Transparent;
+            this.registerButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registerButton.Location = new System.Drawing.Point(233, 416);
+            this.registerButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(155, 83);
+            this.registerButton.TabIndex = 6;
+            this.registerButton.Text = "Register";
+            this.registerButton.UseVisualStyleBackColor = false;
+            // 
+            // LogInButton
+            // 
+            this.LogInButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LogInButton.BackColor = System.Drawing.Color.Transparent;
+            this.LogInButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.LogInButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LogInButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.LogInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.142858F);
+            this.LogInButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LogInButton.Location = new System.Drawing.Point(54, 416);
+            this.LogInButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.LogInButton.Name = "LogInButton";
+            this.LogInButton.Size = new System.Drawing.Size(155, 83);
+            this.LogInButton.TabIndex = 0;
+            this.LogInButton.Text = "Log In";
+            this.LogInButton.UseVisualStyleBackColor = false;
+            this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(63, 294);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Password : ";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // passwordBox
+            // 
+            this.passwordBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passwordBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordBox.Location = new System.Drawing.Point(68, 321);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.passwordBox.Multiline = true;
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(303, 40);
+            this.passwordBox.TabIndex = 1;
+            this.passwordBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passwordBox.UseSystemPasswordChar = true;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(63, 211);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(121, 25);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "User Name :";
+            // 
+            // userNameBox
+            // 
+            this.userNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.userNameBox.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.userNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameBox.Location = new System.Drawing.Point(68, 238);
+            this.userNameBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.userNameBox.Multiline = true;
+            this.userNameBox.Name = "userNameBox";
+            this.userNameBox.Size = new System.Drawing.Size(303, 40);
+            this.userNameBox.TabIndex = 2;
+            this.userNameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::BirdHouseV2.Properties.Resources.SCE_logo;
             this.pictureBox2.Location = new System.Drawing.Point(25, -35);
             this.pictureBox2.Name = "pictureBox2";
@@ -152,11 +168,12 @@ namespace BirdHouseV2
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(461, 549);
+            this.ClientSize = new System.Drawing.Size(461, 540);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "LogInForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log In";
             this.Load += new System.EventHandler(this.LogInForm_Load_1);

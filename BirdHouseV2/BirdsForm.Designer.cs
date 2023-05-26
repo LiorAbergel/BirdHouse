@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.motherSerialtextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.fatherSerialTextBox = new System.Windows.Forms.TextBox();
@@ -216,21 +216,21 @@
             this.BirdGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BirdGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.BirdGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.142858F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BirdGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.142858F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BirdGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.BirdGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BirdGridView.Location = new System.Drawing.Point(0, 0);
             this.BirdGridView.Margin = new System.Windows.Forms.Padding(4);
             this.BirdGridView.MultiSelect = false;
             this.BirdGridView.Name = "BirdGridView";
             this.BirdGridView.RowHeadersWidth = 62;
-            this.BirdGridView.Size = new System.Drawing.Size(764, 612);
+            this.BirdGridView.Size = new System.Drawing.Size(889, 638);
             this.BirdGridView.TabIndex = 43;
             // 
             // panel1
@@ -241,11 +241,12 @@
             this.panel1.Controls.Add(this.BirdGridView);
             this.panel1.Location = new System.Drawing.Point(173, 104);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(764, 612);
+            this.panel1.Size = new System.Drawing.Size(889, 638);
             this.panel1.TabIndex = 63;
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = global::BirdHouseV2.Properties.Resources.background_1;
             this.panel2.Controls.Add(this.addBirdButton);
             this.panel2.Controls.Add(this.serialTextBox);
             this.panel2.Controls.Add(this.motherSerialtextBox);
@@ -266,7 +267,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(210, 678);
+            this.panel2.Size = new System.Drawing.Size(210, 704);
             this.panel2.TabIndex = 0;
             // 
             // label1
@@ -284,7 +285,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(916, 678);
+            this.BackgroundImage = global::BirdHouseV2.Properties.Resources.background_2;
+            this.ClientSize = new System.Drawing.Size(1041, 704);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
