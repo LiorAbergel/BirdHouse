@@ -8,7 +8,7 @@ namespace BirdHouseV2
 {
     public partial class LogInForm : Form
     {
-        string usersFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\users.xls";
+        readonly string usersFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\users.xls";
         public LogInForm()
         {
             InitializeComponent();
@@ -52,36 +52,60 @@ namespace BirdHouseV2
                 string password = passwordBox.Text;
                 string id = null;
 
-                bool foundUser = false;
+                bool validUserName = false;
+                bool validPassword = false;
 
                 foreach (ExcelRangeBase cell in range)
                 {
                     if (cell.Value != null && cell.Value.ToString() == userName)
                     {
+                        validUserName = true;
                         ExcelRange passwordCell = worksheet.Cells[cell.Start.Row, cell.Start.Column + 1]; // Get the corresponding password cell
                         if (passwordCell.Value != null && passwordCell.Value.ToString() == password)
                         {
                             // Username and password found
-                            foundUser = true;
-                            id = worksheet.Cells[cell.Start.Row, cell.Start.Column].Value.ToString();
+                            validPassword = true;
+                            id = worksheet.Cells[cell.Start.Row, cell.Start.Column].Value.ToString(); // Get the corresponding id cell
                             break;
                         }
                     }
+
                 }
 
-                if (foundUser && id != null)
+                if (validUserName && validPassword)
                 {
-                    MainForm mainForm = new MainForm(id);
-                    mainForm.ShowDialog();
+                    if (id != null)
+                    {
+                        MainForm mainForm = new MainForm(id);
+                        mainForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to get some of the data from the database , \n please contact administration !");
+                        return;
+                    }
                 }
-                else
+
+                else if (!validUserName)
                 {
-                    MessageBox.Show("Invalid username or password !");
+                    MessageBox.Show("Invalid username!");
                     return;
                 }
 
+                else if (!validPassword)
+                {
+                    MessageBox.Show("Invalid password!");
+                    return;
+                }
+
+                else
+                {
+                    MessageBox.Show("Invalid username and password!");
+                    return;
+                }
             }
         }
+
 
         private void LogInForm_Load(object sender, EventArgs e)
         {
@@ -94,25 +118,10 @@ namespace BirdHouseV2
 
         }
 
-        private void registerButton_Click(object sender, EventArgs e)
+        private void RegisterButton_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
-        }
-
-        private void LogInButton_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LogInForm_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -21,7 +21,7 @@ namespace DemoLibrary
             }
         }
 
-        public static List<Cage> searchCages(string filter, string columnName)
+        public static List<Cage> SearchCages(string filter, string columnName)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -34,7 +34,7 @@ namespace DemoLibrary
             }
         }
 
-        public static void saveCage(Cage cage)
+        public static void SaveCage(Cage cage)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -46,7 +46,6 @@ namespace DemoLibrary
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-
                 var parameters = new DynamicParameters();
                 parameters.Add("@cageSerial", cageSerial); // Add the ownerID parameter
                 var output = cnn.Query<Bird>($"select * from Birds where cageSerial = @cageSerial",parameters);
@@ -54,7 +53,7 @@ namespace DemoLibrary
             }
         }
 
-        public static List<Bird> searchBirds(string filter, string columnName)
+        public static List<Bird> SearchBirds(string filter, string columnName)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -68,11 +67,27 @@ namespace DemoLibrary
             }
         }
 
-        public static void saveBirds(Bird bird)
+        public static List<string> GetParentsSerials(string cageSerial, string subSpecie, string gender)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Birds (serial,specie,subSpecies,hatchDate,gender,cageSerial,fatherSerial,motherSerial) values (@serial,@specie,@subSpecies,@hatchDate,@gender,@cageSerial,@fatherSerial,@motherSerial)", bird);
+                var parameters = new DynamicParameters();
+                parameters.Add("@cageSerial", cageSerial);
+                parameters.Add("@subSpecie", subSpecie);
+                parameters.Add("@gender", gender);
+
+                string query = $"SELECT * FROM Birds WHERE cageSerial = @cageSerial AND subSpecie = @subSpecie AND gender = @gender";
+                var output = cnn.Query<string>(query, parameters);
+                return output.ToList();
+            }
+        }
+
+        public static void SaveBirds(Bird bird)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("insert into Birds (serial, specie, subSpecie, hatchDate, gender, cageSerial , fatherSerial, motherSerial) " +
+                    "values (@serial, @specie, @subSpecie, @hatchDate, @gender, @cageSerial, @fatherSerial, @motherSerial)", bird);
             }
         }
 

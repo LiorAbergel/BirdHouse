@@ -1,81 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DemoLibrary
+﻿namespace DemoLibrary
 {
-    public enum SubSpeciesAM { North, Center, South }
-    public enum SubSpeciesEU { West, East }
-    public enum SubSpeciesAU { Center, Beach }
-    public enum Species { American, European, Australian }
-
     public class Bird
     {
+        // Enums
+        public enum SubSpeciesAM { North, Center, South }
+        public enum SubSpeciesEU { West, East }
+        public enum SubSpeciesAU { Center, Beach }
+        public enum Species { American, European, Australian }
 
+        // Class Fields
+        public string Serial { get; set; }
+        public string Specie { get; set; }
+        public string SubSpecie { get; set; }
+        public string HatchDate { get; set; }
+        public string Gender { get; set; }
+        public string CageSerial { get; set; }
+        public string FatherSerial { get; set; }
+        public string MotherSerial { get; set; }
 
+        // Parameterless default constructor
+        public Bird() { }
 
-
-        public Bird(string serial, string specie, string subSpecies, string hatchDate, string gender, string cageSerial, string fatherSerial, string motherSerial)
+        public Bird(string serial, string specie, string subSpecie, string hatchDate, string gender, string cageSerial , string fatherSerial, string motherSerial) 
         {
-            this.serial = serial;
-            this.specie = specie;
-            this.subSpecies = subSpecies;
-            this.hatchDate = hatchDate;
-            this.gender = gender;
-            this.cageSerial = cageSerial;
-            this.fatherSerial = fatherSerial;
-            this.motherSerial = motherSerial;
+            this.Serial = serial;
+            this.Specie = specie;
+            this.SubSpecie = subSpecie;
+            this.HatchDate = hatchDate;
+            this.Gender = gender;
+            this.CageSerial = cageSerial;
+            this.FatherSerial = fatherSerial;
+            this.MotherSerial = motherSerial;
         }
 
-        public string serial
-        {
-            get;
-            set;
-        }
-
-        public string specie
-        {
-            get;
-            set;
-        }
-
-        public string subSpecies
-        {
-            get;
-            set;
-        }
-
-        public string hatchDate
-        {
-            get;
-            set;
-        }
-
-        public string gender
-        {
-            get;
-            set;
-        }
-
-        public string cageSerial
-        {
-            get;
-            set; 
-        }
-
-        public string fatherSerial
-        {
-        get;
-        set;
-        }
-
-        public string motherSerial
-        {
-        get;
-        set;
-        }
 
     }
 }

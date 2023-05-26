@@ -3,27 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static DemoLibrary.Cage;
+using static DemoLibrary.Bird;
+
 
 namespace BirdHouseV2
 {
     public partial class MainForm : Form
     {
         List<Cage> Cages = new List<Cage>();
-        string ownerID;
+        readonly string ownerID;
         string cageSerial;
 
-        public MainForm(string id)
+        public MainForm(string ownerID)
         {
             InitializeComponent();
 
-            ownerID = id;
-            
+            this.ownerID = ownerID;
             LoadCageList();
         }
 
         private void LoadCageList()
         {
-            // TODO - Get real data hear
             Cages = SqliteDataAccess.LoadCages(ownerID);
             WireUpCagesList();
         }
@@ -35,21 +35,14 @@ namespace BirdHouseV2
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            var MaterialString = Enum.GetNames(typeof(Material));
+            var MaterialString = Enum.GetNames(typeof(Materials));
             MaterialComboBox.Items.AddRange(MaterialString);
-
-             
         }
 
-        private void refreshListButton_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void addCage_Click(object sender, EventArgs e)
+        private void AddCage_Click(object sender, EventArgs e)
         {
             string serial = SerialNumberTextBox.Text;
-            string material = MaterialComboBox.SelectedItem as string;
-            if (material == null)
+            if (!(MaterialComboBox.SelectedItem is string material))
             {
                 MessageBox.Show("Enter Material!");
                 return;
@@ -63,7 +56,7 @@ namespace BirdHouseV2
 
                     if (!(char.IsNumber(c) || char.IsLetter(c)))
                     {
-                        MessageBox.Show("Invalide Legnth! \njust numbers and letters allowed!");
+                        MessageBox.Show("Invalid Legnth! \njust numbers and letters allowed!");
                         return;
                     }
                 }
@@ -81,7 +74,7 @@ namespace BirdHouseV2
 
                     if (!(char.IsNumber(c)))
                     {
-                        MessageBox.Show("Invalide Width! \njust numbers allowed!");
+                        MessageBox.Show("Invalid Width! \n only numbers allowed!");
                         return;
                     }
 
@@ -89,7 +82,7 @@ namespace BirdHouseV2
             }
             else
             {
-                MessageBox.Show("Enter Widgth!");
+                MessageBox.Show("Enter Width!");
                 return;
             }
             string height = HeightTextBox.Text;
@@ -100,7 +93,7 @@ namespace BirdHouseV2
 
                     if (!(char.IsNumber(c)))
                     {
-                        MessageBox.Show("Invalide Height! \njust numbers allowed!");
+                        MessageBox.Show("Invalid Height! \njust numbers allowed!");
                         return;
                     }
 
@@ -114,41 +107,31 @@ namespace BirdHouseV2
 
             Cage cage_test = new Cage(ownerID, serial, length, width, height , material);
 
-            SqliteDataAccess.saveCage(cage_test);
+            SqliteDataAccess.SaveCage(cage_test);
 
             LoadCageList();
         }
 
-        private void listCagesListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cageRadioButton_Click(object sender, EventArgs e)
+        private void CageRadioButton_Click(object sender, EventArgs e)
         {
             categoryComboBox.Items.Clear();
             categoryComboBox.Items.AddRange(new string[] { "Serial", "Material" });
         }
 
-        private void birdRadioButton_Click(object sender, EventArgs e)
+        private void BirdRadioButton_Click(object sender, EventArgs e)
         {
             categoryComboBox.Items.Clear();
             categoryComboBox.Items.AddRange(new string[] { "Serial", "Species", "Hatch Date", "Gender" });
         }
 
-        private void categoryComboBox_SelectedValueChanged(object sender, EventArgs e)
+        private void CategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cageRadioButton.Checked)
             {
                 if (categoryComboBox.SelectedItem.ToString() == "Material")
                 {
                     subCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-                    subCategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Material)));
+                    subCategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Materials)));
                 }
                 else
                 {
@@ -191,14 +174,19 @@ namespace BirdHouseV2
 
         }
 
-        private void subCategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
+        private void AddBirdButton_Click(object sender, EventArgs e)
         {
-        }
-
-        private void addBirdButton_Click(object sender, EventArgs e)
-        {
-            var birdsForm = new BirdsForm(cageSerial);
-            birdsForm.ShowDialog();
+            // first check if a cage was selected , if not , show a message to user 
+            if (CageGridView.SelectedRows.Count > 0)
+            {
+                var birdsForm = new BirdsForm(cageSerial);
+                birdsForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a cage to add birds !");
+                return;
+            }
         }
 
         private void CageGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -206,7 +194,7 @@ namespace BirdHouseV2
             cageSerial = CageGridView.SelectedRows[0].Cells[0].Value.ToString();
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             if (cageRadioButton.Checked)
             {
@@ -214,12 +202,12 @@ namespace BirdHouseV2
                 if (catagory == "Material")
                 {
                     string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
                 }
                 if (catagory == "Serial")
                 {
                     string Serial = subCategoryComboBox.Text;
-                    Cages = SqliteDataAccess.searchCages(Serial, catagory);
+                    Cages = SqliteDataAccess.SearchCages(Serial, catagory);
                 }
                 CageGridView.DataSource = Cages;
             }
@@ -231,25 +219,24 @@ namespace BirdHouseV2
                 if (catagory == "Species")
                 {
                     string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
                 }
                 if (catagory == "Serial")
                 {
                     string Serial = subCategoryComboBox.Text;
-                    birds = SqliteDataAccess.searchBirds(Serial, catagory);
+                    birds = SqliteDataAccess.SearchBirds(Serial, catagory);
                 }
                 if (catagory == "Hatch Date")
                 {
                     string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
                 }
 
                 if (catagory == "Gender")
                 {
                     string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.searchCages(subCatagory, catagory);
+                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
                 }
-
 
                 CageGridView.DataSource = birds;
             }
@@ -257,14 +244,40 @@ namespace BirdHouseV2
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void SerialNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            // Check if the pressed key is a digit, a letter, or a control key (e.g., backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Reject the keypress event
+            }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void LengthTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Check if the pressed key is a digit or a control key (e.g., backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Reject the keypress event
+            }
+        }
 
+        private void WidthTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the pressed key is a digit or a control key (e.g., backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Reject the keypress event
+            }
+        }
+
+        private void HeightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the pressed key is a digit or a control key (e.g., backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Reject the keypress event
+            }
         }
     }
 }
