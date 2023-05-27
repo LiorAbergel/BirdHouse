@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using static DemoLibrary.Cage;
 using static DemoLibrary.Bird;
-
+using System.Linq;
+using System.ComponentModel;
 
 namespace BirdHouseV2
 {
@@ -105,9 +106,10 @@ namespace BirdHouseV2
                 return;
             }
 
-            Cage cage_test = new Cage(ownerID, serial, length, width, height , material);
+            Cage cageToSave = new Cage(ownerID, serial, length, width, height , material);
+            SqliteDataAccess.SaveCage(cageToSave);
 
-            SqliteDataAccess.SaveCage(cage_test);
+            MessageBox.Show("Cage added successfully !");
 
             LoadCageList();
         }
@@ -116,16 +118,24 @@ namespace BirdHouseV2
         {
             categoryComboBox.Items.Clear();
             categoryComboBox.Items.AddRange(new string[] { "Serial", "Material" });
+
+            subCategoryComboBox.Text = "";
+            subCategoryComboBox.Items.Clear();
         }
 
         private void BirdRadioButton_Click(object sender, EventArgs e)
         {
             categoryComboBox.Items.Clear();
-            categoryComboBox.Items.AddRange(new string[] { "Serial", "Species", "Hatch Date", "Gender" });
+            categoryComboBox.Items.AddRange(new string[] { "Serial", "Specie", "Hatch Date", "Gender" });
+
+            subCategoryComboBox.Text = "";
+            subCategoryComboBox.Items.Clear();
         }
 
         private void CategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
+            subCategoryComboBox.Text = "";
+
             if (cageRadioButton.Checked)
             {
                 if (categoryComboBox.SelectedItem.ToString() == "Material")
@@ -136,6 +146,7 @@ namespace BirdHouseV2
                 else
                 {
                     subCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                    subCategoryComboBox.Text = "Please enter a cage serial";
                 }
             }
 
@@ -146,9 +157,11 @@ namespace BirdHouseV2
                 {
                     case "Serial":
                         subCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                        subCategoryComboBox.Text = "Please enter a bird serial";
+                        // TODO : birds serial can only contain digits !
                         break;
 
-                    case "Species":
+                    case "Specie":
                         subCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
                         subCategoryComboBox.Items.Clear();
                         subCategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Species)));
@@ -179,7 +192,7 @@ namespace BirdHouseV2
             // first check if a cage was selected , if not , show a message to user 
             if (CageGridView.SelectedRows.Count > 0)
             {
-                var birdsForm = new BirdsForm(cageSerial);
+                var birdsForm = new BirdsViewForm(ownerID, cageSerial);
                 birdsForm.ShowDialog();
             }
             else
@@ -198,50 +211,94 @@ namespace BirdHouseV2
         {
             if (cageRadioButton.Checked)
             {
-                string catagory = categoryComboBox.SelectedItem as string;
-                if (catagory == "Material")
+                string category = categoryComboBox.SelectedItem as string;
+
+                if (category == "Material")
                 {
-                    string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
+                    string materialType = subCategoryComboBox.SelectedItem as string;
+
+                    if (materialType == null)
+                    {
+                        MessageBox.Show("Please select type of material !");
+                        return;
+                    }
+
+                    else Cages = SqliteDataAccess.SearchCages(ownerID, materialType, category);
                 }
-                if (catagory == "Serial")
+
+                else if (category == "Serial")
                 {
-                    string Serial = subCategoryComboBox.Text;
-                    Cages = SqliteDataAccess.SearchCages(Serial, catagory);
+                    string serial = subCategoryComboBox.Text;
+
+                    if (serial == null || serial == "Please enter a cage serial")
+                    {
+                        MessageBox.Show("Please enter cage serial !");
+                        return;
+                    }
+
+                    else Cages = SqliteDataAccess.SearchCages(ownerID, serial, category);
                 }
+
+                else
+                {
+                    MessageBox.Show("Please select a category !");
+                    return;
+                }
+
                 CageGridView.DataSource = Cages;
+                CageGridView.Sort(CageGridView.Columns["Serial"], ListSortDirection.Ascending);
             }
 
-            if (birdRadioButton.Checked)
+            else if (birdRadioButton.Checked)
             {
                 List<Bird> birds= new List<Bird>();
-                string catagory = categoryComboBox.SelectedItem as string;
-                if (catagory == "Species")
+
+                string category = categoryComboBox.SelectedItem as string;
+
+                if (category == "Specie")
                 {
-                    string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
-                }
-                if (catagory == "Serial")
-                {
-                    string Serial = subCategoryComboBox.Text;
-                    birds = SqliteDataAccess.SearchBirds(Serial, catagory);
-                }
-                if (catagory == "Hatch Date")
-                {
-                    string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
+                    string specie = subCategoryComboBox.SelectedItem as string;
+                    birds = SqliteDataAccess.SearchBirds(specie, category);
                 }
 
-                if (catagory == "Gender")
+                else if (category == "Serial")
                 {
-                    string subCatagory = subCategoryComboBox.SelectedItem as string;
-                    Cages = SqliteDataAccess.SearchCages(subCatagory, catagory);
+                    string serial = subCategoryComboBox.Text;
+                    birds = SqliteDataAccess.SearchBirds(serial, category);
                 }
 
-                CageGridView.DataSource = birds;
+                else if (category == "Hatch Date")
+                {
+                    //TODO : complete search by date
+                    string hatchDate = subCategoryComboBox.SelectedItem as string;
+                    birds = SqliteDataAccess.SearchBirds(hatchDate, category);
+                }
+
+                else if (category == "Gender")
+                {
+                    string gender = subCategoryComboBox.SelectedItem as string;
+                    birds = SqliteDataAccess.SearchBirds(gender, category);
+                }
+
+                if (birds != null)
+                {
+                    var birdsForm = new BirdsViewForm(ownerID, birds);
+                    birdsForm.ShowDialog();
+                }
+
+                else
+                {
+                    MessageBox.Show("Please select a category !");
+                    return;
+                }
+
             }
 
-
+            else
+            {
+                MessageBox.Show("Please select items to search ! (Cage / Birds) ");
+                return;
+            }
         }
 
         private void SerialNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)

@@ -96,7 +96,6 @@ C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\Bird
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.csproj.SuggestedBindingRedirects.cache
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\Interop.MSXML2.dll
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.csproj.ResolveComReference.cache
-C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.BirdsForm.resources
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.LogInForm.resources
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.MainForm.resources
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.Properties.Resources.resources
@@ -106,3 +105,4 @@ C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\Bird
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.csproj.CopyComplete
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.exe
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.pdb
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.BirdsViewForm.resources

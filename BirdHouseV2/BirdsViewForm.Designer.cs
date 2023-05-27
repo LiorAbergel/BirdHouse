@@ -1,6 +1,6 @@
 ﻿namespace BirdHouseV2
 {
-    partial class BirdsForm
+    partial class BirdsViewForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hatchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.subSpeciesComboBox = new System.Windows.Forms.ComboBox();
@@ -45,7 +43,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.MotherSerialComboBox = new System.Windows.Forms.ComboBox();
+            this.MotherSerialLabel = new System.Windows.Forms.Label();
             this.FatherSerialComboBox = new System.Windows.Forms.ComboBox();
+            this.CageSerialComboBox = new System.Windows.Forms.ComboBox();
+            this.FatherSerialLabel = new System.Windows.Forms.Label();
+            this.CageSerialLabel = new System.Windows.Forms.Label();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.AddChildToBirdButton = new System.Windows.Forms.Button();
@@ -53,26 +55,6 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 364);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 20);
-            this.label13.TabIndex = 58;
-            this.label13.Text = "Mother Serial";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 300);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 20);
-            this.label12.TabIndex = 56;
-            this.label12.Text = "Father Serial";
             // 
             // hatchDateTimePicker
             // 
@@ -177,14 +159,14 @@
             this.BirdGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BirdGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.BirdGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.142858F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BirdGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.142858F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BirdGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.BirdGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BirdGridView.Location = new System.Drawing.Point(0, 0);
             this.BirdGridView.MultiSelect = false;
@@ -208,14 +190,16 @@
             // 
             this.panel2.BackgroundImage = global::BirdHouseV2.Properties.Resources.background_1;
             this.panel2.Controls.Add(this.MotherSerialComboBox);
+            this.panel2.Controls.Add(this.MotherSerialLabel);
             this.panel2.Controls.Add(this.FatherSerialComboBox);
+            this.panel2.Controls.Add(this.CageSerialComboBox);
+            this.panel2.Controls.Add(this.FatherSerialLabel);
+            this.panel2.Controls.Add(this.CageSerialLabel);
             this.panel2.Controls.Add(this.genderComboBox);
             this.panel2.Controls.Add(this.addBirdButton);
             this.panel2.Controls.Add(this.serialTextBox);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.hatchDateTimePicker);
             this.panel2.Controls.Add(this.label10);
@@ -232,21 +216,62 @@
             // 
             this.MotherSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MotherSerialComboBox.FormattingEnabled = true;
-            this.MotherSerialComboBox.Location = new System.Drawing.Point(11, 386);
+            this.MotherSerialComboBox.Location = new System.Drawing.Point(9, 449);
             this.MotherSerialComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.MotherSerialComboBox.Name = "MotherSerialComboBox";
             this.MotherSerialComboBox.Size = new System.Drawing.Size(142, 28);
-            this.MotherSerialComboBox.TabIndex = 65;
+            this.MotherSerialComboBox.TabIndex = 69;
+            // 
+            // MotherSerialLabel
+            // 
+            this.MotherSerialLabel.AutoSize = true;
+            this.MotherSerialLabel.Location = new System.Drawing.Point(4, 427);
+            this.MotherSerialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MotherSerialLabel.Name = "MotherSerialLabel";
+            this.MotherSerialLabel.Size = new System.Drawing.Size(103, 20);
+            this.MotherSerialLabel.TabIndex = 68;
+            this.MotherSerialLabel.Text = "Mother Serial";
             // 
             // FatherSerialComboBox
             // 
             this.FatherSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FatherSerialComboBox.FormattingEnabled = true;
-            this.FatherSerialComboBox.Location = new System.Drawing.Point(10, 322);
+            this.FatherSerialComboBox.Location = new System.Drawing.Point(9, 391);
             this.FatherSerialComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.FatherSerialComboBox.Name = "FatherSerialComboBox";
             this.FatherSerialComboBox.Size = new System.Drawing.Size(142, 28);
-            this.FatherSerialComboBox.TabIndex = 64;
+            this.FatherSerialComboBox.TabIndex = 66;
+            // 
+            // CageSerialComboBox
+            // 
+            this.CageSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CageSerialComboBox.FormattingEnabled = true;
+            this.CageSerialComboBox.Location = new System.Drawing.Point(10, 329);
+            this.CageSerialComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.CageSerialComboBox.Name = "CageSerialComboBox";
+            this.CageSerialComboBox.Size = new System.Drawing.Size(142, 28);
+            this.CageSerialComboBox.TabIndex = 67;
+            this.CageSerialComboBox.SelectedValueChanged += new System.EventHandler(this.CageSerialComboBox_SelectedValueChanged);
+            // 
+            // FatherSerialLabel
+            // 
+            this.FatherSerialLabel.AutoSize = true;
+            this.FatherSerialLabel.Location = new System.Drawing.Point(5, 369);
+            this.FatherSerialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FatherSerialLabel.Name = "FatherSerialLabel";
+            this.FatherSerialLabel.Size = new System.Drawing.Size(100, 20);
+            this.FatherSerialLabel.TabIndex = 65;
+            this.FatherSerialLabel.Text = "Father Serial";
+            // 
+            // CageSerialLabel
+            // 
+            this.CageSerialLabel.AutoSize = true;
+            this.CageSerialLabel.Location = new System.Drawing.Point(5, 307);
+            this.CageSerialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CageSerialLabel.Name = "CageSerialLabel";
+            this.CageSerialLabel.Size = new System.Drawing.Size(91, 20);
+            this.CageSerialLabel.TabIndex = 66;
+            this.CageSerialLabel.Text = "Cage Serial";
             // 
             // genderComboBox
             // 
@@ -264,9 +289,9 @@
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(390, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 31);
+            this.label1.Size = new System.Drawing.Size(125, 31);
             this.label1.TabIndex = 64;
-            this.label1.Text = "Add a Bird";
+            this.label1.Text = "Bird View";
             // 
             // AddChildToBirdButton
             // 
@@ -278,7 +303,7 @@
             this.AddChildToBirdButton.UseVisualStyleBackColor = true;
             this.AddChildToBirdButton.Click += new System.EventHandler(this.AddChildToBirdButton_Click);
             // 
-            // BirdsForm
+            // BirdsViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -289,11 +314,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "BirdsForm";
+            this.Name = "BirdsViewForm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "BirdsForm";
+            this.Text = "Bird View";
             this.Load += new System.EventHandler(this.BirdsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BirdGridView)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -305,8 +330,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker hatchDateTimePicker;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox subSpeciesComboBox;
@@ -322,8 +345,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox genderComboBox;
-        private System.Windows.Forms.ComboBox MotherSerialComboBox;
-        private System.Windows.Forms.ComboBox FatherSerialComboBox;
         private System.Windows.Forms.Button AddChildToBirdButton;
+        private System.Windows.Forms.ComboBox CageSerialComboBox;
+        private System.Windows.Forms.Label CageSerialLabel;
+        private System.Windows.Forms.ComboBox FatherSerialComboBox;
+        private System.Windows.Forms.Label FatherSerialLabel;
+        private System.Windows.Forms.ComboBox MotherSerialComboBox;
+        private System.Windows.Forms.Label MotherSerialLabel;
     }
 }

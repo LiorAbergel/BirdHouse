@@ -22,14 +22,15 @@ namespace DemoLibrary
             }
         }
 
-        public static List<Cage> SearchCages(string filter, string columnName)
+        public static List<Cage> SearchCages(string ownerID, string filter, string columnName)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var parameters = new DynamicParameters();
+                parameters.Add("@ownerID", ownerID);
                 parameters.Add("@filter", filter); // Add the filter parameter
 
-                string query = $"SELECT * FROM Cages WHERE {columnName} = @filter";
+                string query = $"SELECT * FROM Cages WHERE ownerID = @ownerID AND {columnName} = @filter";
                 var output = cnn.Query<Cage>(query, parameters);
                 return output.ToList();
             }
@@ -58,27 +59,11 @@ namespace DemoLibrary
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-
                 var parameters = new DynamicParameters();
                 parameters.Add("@filter", filter); // Add the filter parameter
 
                 string query = $"SELECT * FROM Birds WHERE {columnName} = @filter";
                 var output = cnn.Query<Bird>(query, parameters);
-                return output.ToList();
-            }
-        }
-
-        public static List<string> GetParentsSerials(string cageSerial, string subSpecie, string gender)
-        {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("@cageSerial", cageSerial);
-                parameters.Add("@subSpecie", subSpecie);
-                parameters.Add("@gender", gender);
-
-                string query = $"SELECT * FROM Birds WHERE cageSerial = @cageSerial AND subSpecie = @subSpecie AND gender = @gender";
-                var output = cnn.Query<string>(query, parameters);
                 return output.ToList();
             }
         }
@@ -100,5 +85,21 @@ namespace DemoLibrary
             var connectionString = connectionStringSettings.ConnectionString.Replace("|DataDirectory|", parentFolderPath);
             return connectionString;
         }
+
+        public static List<string> GetParentsSerials(string cageSerial, string subSpecie, string gender)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@cageSerial", cageSerial);
+                parameters.Add("@subSpecie", subSpecie);
+                parameters.Add("@gender", gender);
+
+                string query = $"SELECT * FROM Birds WHERE cageSerial = @cageSerial AND subSpecie = @subSpecie AND gender = @gender";
+                var output = cnn.Query<string>(query, parameters);
+                return output.ToList();
+            }
+        }
+
     }
 }

@@ -67,11 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BirdsForm.cs">
+    <Compile Include="BirdsViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BirdsForm.Designer.cs">
-      <DependentUpon>BirdsForm.cs</DependentUpon>
+    <Compile Include="BirdsViewForm.Designer.cs">
+      <DependentUpon>BirdsViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
@@ -93,8 +93,8 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BirdsForm.resx">
-      <DependentUpon>BirdsForm.cs</DependentUpon>
+    <EmbeddedResource Include="BirdsViewForm.resx">
+      <DependentUpon>BirdsViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>

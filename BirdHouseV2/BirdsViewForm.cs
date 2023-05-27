@@ -1,53 +1,95 @@
 ﻿using DemoLibrary;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using static DemoLibrary.Bird;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BirdHouseV2
 {
-    public partial class BirdsForm : Form
+    public partial class BirdsViewForm : Form
     {
-        public string CageSerial { get; set; }
+        public string ownerID { get; set; }
+        public string cageSerial { get; set; }
+        public List<Bird> Birds { get; set; }
+        public bool isCageForm { get; set; }
+        public bool isBirdsForm { get; set; }
 
-        List<Bird> Birds;
-
-        public BirdsForm(string cageSerial)
+        public BirdsViewForm(string ownerID, string cageSerial)
         {
             InitializeComponent();
 
+            this.ownerID = ownerID;
+            this.cageSerial = cageSerial;
             Birds = new List<Bird>();
-            CageSerial = cageSerial;
+            isCageForm = true;
+            isBirdsForm = false;
+
+            // Disable cage serial box , it's not needed in this state
+            CageSerialLabel.Enabled = false;
+            CageSerialLabel.Visible = false;
+            CageSerialComboBox.Enabled = false;
+            CageSerialComboBox.Visible = false;
+
+            // relocate father and mother serial boxes 
+            var fatherLabelOldLocation = FatherSerialLabel.Location;
+            var fatherComboBoxOldLocation = FatherSerialComboBox.Location;
+
+            FatherSerialLabel.Location = CageSerialLabel.Location;
+            FatherSerialComboBox.Location = CageSerialComboBox.Location;
+
+            MotherSerialLabel.Location = fatherLabelOldLocation;
+            MotherSerialComboBox.Location = fatherComboBoxOldLocation;
+
+        }
+
+        public BirdsViewForm(string ownerID, List<Bird> birds)
+        {
+            InitializeComponent();
+
+            this.ownerID = ownerID;
+            Birds = birds;
+            cageSerial = null;
+            isBirdsForm = true;
+            isCageForm = false;
+
+        }
+
+        private void BirdsForm_Load(object sender, EventArgs e)
+        {
+            LoadBirdsList();
+
             specieComboBox.Items.AddRange(Enum.GetNames(typeof(Species)));
             genderComboBox.Items.AddRange(new string[] { "Male", "Female" });
             FatherSerialComboBox.Items.Insert(0, "None");
             MotherSerialComboBox.Items.Insert(0, "None");
         }
 
-        private void BirdsForm_Load(object sender, EventArgs e)
-        {
-            LoadBirdsList();
-        }
-
         private void LoadBirdsList()
         {
-            Birds = SqliteDataAccess.LoadBirds(CageSerial);
+            if (isCageForm)
+                Birds = SqliteDataAccess.LoadBirds(cageSerial);
+
             WireUpBirdsList();
         }
 
         private void WireUpBirdsList()
         {
             BirdGridView.DataSource = Birds;
+            BirdGridView.Sort(BirdGridView.Columns["Serial"], ListSortDirection.Ascending);
         }
 
         private void AddBirdButton_Click(object sender, EventArgs e)
         {
             Bird birdToSave;
+            string cageSerialInput = isCageForm ? cageSerial :CageSerialComboBox.SelectedItem.ToString() ;
 
             if (FatherSerialComboBox.SelectedItem.ToString() != "None" && MotherSerialComboBox.SelectedItem.ToString() != "None")
             {
                 birdToSave = new Bird(serialTextBox.Text, specieComboBox.SelectedItem as string, subSpeciesComboBox.SelectedItem as string,
-                    hatchDateTimePicker.Text, genderComboBox.SelectedItem as string, CageSerial,
+                    hatchDateTimePicker.Text, genderComboBox.SelectedItem as string, cageSerialInput,
                     FatherSerialComboBox.SelectedItem as string, MotherSerialComboBox.SelectedItem as string);
             }
 
@@ -66,11 +108,14 @@ namespace BirdHouseV2
             else
             {
                 birdToSave = new Bird(serialTextBox.Text, specieComboBox.SelectedItem as string, subSpeciesComboBox.SelectedItem as string,
-                    hatchDateTimePicker.Text, genderComboBox.SelectedItem as string, CageSerial, null,null);
+                    hatchDateTimePicker.Text, genderComboBox.SelectedItem as string, cageSerialInput, null,null);
             }
 
             if (birdToSave != null)
+            {
                 SqliteDataAccess.SaveBirds(birdToSave);
+                MessageBox.Show("Bird added successfully !");
+            }
 
             LoadBirdsList();
         }
@@ -129,25 +174,50 @@ namespace BirdHouseV2
 
         public void LoadParentsSerials()
         {
+            // TODO : check if this method works if isBirdsForm
+
             // Clear existing items before adding new ones
             FatherSerialComboBox.Items.Clear();
             MotherSerialComboBox.Items.Clear();
 
-            List<string> fatherSerials = SqliteDataAccess.GetParentsSerials(CageSerial, subSpeciesComboBox.SelectedItem.ToString(), "Male");
-            List<string> motherSerials = SqliteDataAccess.GetParentsSerials(CageSerial, subSpeciesComboBox.SelectedItem.ToString(), "Female");
+            string cageSerialInput = null;
+            List<string> fatherSerials, motherSerials;
 
-            // Add the serials to the combo box
-            FatherSerialComboBox.Items.AddRange(fatherSerials.ToArray());
-            MotherSerialComboBox.Items.AddRange(motherSerials.ToArray());
+            if (isCageForm)
+                cageSerialInput = cageSerial;
 
-            // Insert "None" at the beginning
-            FatherSerialComboBox.Items.Insert(0, "None");
-            MotherSerialComboBox.Items.Insert(0, "None");
+            else if (isBirdsForm)
+                cageSerialInput = CageSerialComboBox.SelectedItem.ToString();
+
+            if (cageSerialInput != null)
+            {
+                fatherSerials = SqliteDataAccess.GetParentsSerials(cageSerialInput,
+                    subSpeciesComboBox.SelectedItem.ToString(), "Male");
+
+                motherSerials = SqliteDataAccess.GetParentsSerials(cageSerialInput,
+                    subSpeciesComboBox.SelectedItem.ToString(), "Female");
+
+                // Add the serials to the combo box
+                FatherSerialComboBox.Items.AddRange(fatherSerials.ToArray());
+                MotherSerialComboBox.Items.AddRange(motherSerials.ToArray());
+
+                // Insert "None" at the beginning
+                FatherSerialComboBox.Items.Insert(0, "None");
+                MotherSerialComboBox.Items.Insert(0, "None");
+            }
         }
 
         private void SubSpeciesComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            LoadParentsSerials();
+            if (isCageForm)
+                LoadParentsSerials();
+            
+            else if (isBirdsForm)
+            {
+                List<Cage> cages = SqliteDataAccess.LoadCages(ownerID);
+                object[] CageSerials = cages.Select(c => c.Serial).ToArray();
+                CageSerialComboBox.Items.AddRange(CageSerials);
+            }
         }
 
         private void AddChildToBirdButton_Click(object sender, EventArgs e)
@@ -164,9 +234,22 @@ namespace BirdHouseV2
                 MotherSerialComboBox.SelectedItem = null;
 
                 if (selectedRow[4].Value.ToString() == "Male")
+                {
+                    if (!FatherSerialComboBox.Items.Contains(selectedRow[0].Value))
+                        FatherSerialComboBox.Items.Add(selectedRow[0].Value);
+
                     FatherSerialComboBox.SelectedItem = selectedRow[0].Value;
+                }
+
                 else if (selectedRow[4].Value.ToString() == "Female")
+                {
+                    if (!MotherSerialComboBox.Items.Contains(selectedRow[0].Value))
+                        MotherSerialComboBox.Items.Add(selectedRow[0].Value);
+
                     MotherSerialComboBox.SelectedItem = selectedRow[0].Value;
+                }
+
+                CageSerialComboBox.SelectedItem = selectedRow[5].Value;
             }
 
             else
@@ -175,6 +258,11 @@ namespace BirdHouseV2
                 return;
             }
 
+        }
+
+        private void CageSerialComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LoadParentsSerials();
         }
     }
 }
