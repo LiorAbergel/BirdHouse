@@ -71,15 +71,15 @@ namespace BirdHouseV2
         {
             if (isCageForm)
                 Birds = SqliteDataAccess.LoadBirds(cageSerial);
-
+            
             WireUpBirdsList();
         }
 
         private void WireUpBirdsList()
         {
             BirdGridView.DataSource = Birds;
-            BirdGridView.Sort(BirdGridView.Columns["Serial"], ListSortDirection.Ascending);
         }
+
 
         private void AddBirdButton_Click(object sender, EventArgs e)
         {

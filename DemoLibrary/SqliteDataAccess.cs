@@ -50,7 +50,7 @@ namespace DemoLibrary
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@cageSerial", cageSerial); // Add the ownerID parameter
-                var output = cnn.Query<Bird>($"select * from Birds where cageSerial = @cageSerial",parameters);
+                var output = cnn.Query<Bird>($"select * from Birds where cageSerial = @cageSerial ORDER BY CAST(Serial AS INTEGER) ASC",parameters);
                 return output.ToList();
             }
         }
@@ -62,7 +62,7 @@ namespace DemoLibrary
                 var parameters = new DynamicParameters();
                 parameters.Add("@filter", filter); // Add the filter parameter
 
-                string query = $"SELECT * FROM Birds WHERE {columnName} = @filter";
+                string query = $"SELECT * FROM Birds WHERE {columnName} = @filter ORDER BY CAST(Serial AS INTEGER) ASC";
                 var output = cnn.Query<Bird>(query, parameters);
                 return output.ToList();
             }
