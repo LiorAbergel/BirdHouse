@@ -15,6 +15,7 @@ namespace BirdHouseV2
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
+            // checks if a users file exist , if not , creates one
             if (!File.Exists(usersFilePath))
             {
                 // Create a new Excel package
@@ -45,26 +46,40 @@ namespace BirdHouseV2
                 // Get the dimension of the worksheet (the range of cells containing data)
                 ExcelCellAddress endCell = worksheet.Dimension.End;
 
+                // Initioalize range of search
                 ExcelRangeBase range = worksheet.Cells[2, 1, endCell.Row, endCell.Column];
 
                 // TODO : add input checking
                 string userName = userNameBox.Text;
                 string password = passwordBox.Text;
-                string id = null;
 
-                bool validUserName = false;
-                bool validPassword = false;
+                if (userName == "")
+                {
+                    MessageBox.Show("Please enter username !");
+                    return;
+                }
+
+                else if (password == "") 
+                {
+                    MessageBox.Show("Please enter password !");
+                    return;
+                }
+
+                string id = null;
+                bool foundUserName = false;
+                bool foundPassword = false;
 
                 foreach (ExcelRangeBase cell in range)
                 {
                     if (cell.Value != null && cell.Value.ToString() == userName)
                     {
-                        validUserName = true;
+                        // Username found
+                        foundUserName = true;
                         ExcelRange passwordCell = worksheet.Cells[cell.Start.Row, cell.Start.Column + 1]; // Get the corresponding password cell
                         if (passwordCell.Value != null && passwordCell.Value.ToString() == password)
                         {
-                            // Username and password found
-                            validPassword = true;
+                            // Password found
+                            foundPassword = true;
                             id = worksheet.Cells[cell.Start.Row, cell.Start.Column].Value.ToString(); // Get the corresponding id cell
                             break;
                         }
@@ -72,7 +87,7 @@ namespace BirdHouseV2
 
                 }
 
-                if (validUserName && validPassword)
+                if (foundUserName && foundPassword)
                 {
                     if (id != null)
                     {
@@ -86,36 +101,24 @@ namespace BirdHouseV2
                     }
                 }
 
-                else if (!validUserName)
+                else if (!foundUserName)
                 {
-                    MessageBox.Show("Invalid username!");
+                    MessageBox.Show("Incorrect username!");
                     return;
                 }
 
-                else if (!validPassword)
+                else if (!foundPassword)
                 {
-                    MessageBox.Show("Invalid password!");
+                    MessageBox.Show("Incorrect password!");
                     return;
                 }
 
                 else
                 {
-                    MessageBox.Show("Invalid username and password!");
+                    MessageBox.Show("Incorrect username and password!");
                     return;
                 }
             }
-        }
-
-
-        private void LogInForm_Load(object sender, EventArgs e)
-        {
-            // this line adds an event handler to detect this form closing
-            FormClosing += new FormClosingEventHandler(LogInForm_FormClosing);
-        }
-
-        private void LogInForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)

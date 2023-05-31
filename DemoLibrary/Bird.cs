@@ -1,4 +1,6 @@
-﻿namespace DemoLibrary
+﻿using System;
+
+namespace DemoLibrary
 {
     public class Bird
     {
@@ -12,7 +14,7 @@
         public string Serial { get; set; }
         public string Specie { get; set; }
         public string SubSpecie { get; set; }
-        public string HatchDate { get; set; }
+        public DateTime HatchDate { get; set; }
         public string Gender { get; set; }
         public string CageSerial { get; set; }
         public string FatherSerial { get; set; }
@@ -21,16 +23,16 @@
         // Parameterless default constructor
         public Bird() { }
 
-        public Bird(string serial, string specie, string subSpecie, string hatchDate, string gender, string cageSerial , string fatherSerial, string motherSerial) 
+        public Bird(string serial, string specie, string subSpecie, DateTime hatchDate, string gender, string cageSerial , string fatherSerial, string motherSerial) 
         {
-            this.Serial = serial;
-            this.Specie = specie;
-            this.SubSpecie = subSpecie;
-            this.HatchDate = hatchDate;
-            this.Gender = gender;
-            this.CageSerial = cageSerial;
-            this.FatherSerial = fatherSerial;
-            this.MotherSerial = motherSerial;
+            Serial = serial;
+            Specie = specie;
+            SubSpecie = subSpecie;
+            HatchDate = hatchDate;
+            Gender = gender;
+            CageSerial = cageSerial;
+            FatherSerial = fatherSerial;
+            MotherSerial = motherSerial;
         }
 
 

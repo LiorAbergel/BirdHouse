@@ -120,9 +120,8 @@ namespace BirdHouseV2
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordBox.Location = new System.Drawing.Point(56, 268);
             this.passwordBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.passwordBox.Multiline = true;
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(249, 34);
+            this.passwordBox.Size = new System.Drawing.Size(249, 32);
             this.passwordBox.TabIndex = 1;
             this.passwordBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.passwordBox.UseSystemPasswordChar = true;
@@ -145,9 +144,8 @@ namespace BirdHouseV2
             this.userNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameBox.Location = new System.Drawing.Point(56, 198);
             this.userNameBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.userNameBox.Multiline = true;
             this.userNameBox.Name = "userNameBox";
-            this.userNameBox.Size = new System.Drawing.Size(249, 34);
+            this.userNameBox.Size = new System.Drawing.Size(249, 32);
             this.userNameBox.TabIndex = 2;
             this.userNameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

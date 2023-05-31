@@ -31,111 +31,119 @@ namespace BirdHouseV2
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
-            label1 = new Label();
-            userNameBox = new TextBox();
-            passwordBox = new TextBox();
-            label3 = new Label();
-            idBox = new TextBox();
-            label4 = new Label();
-            confirmButton = new Button();
-            button2 = new Button();
-            SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.userNameBox = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.idBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.confirmButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(14, 105);
-            label2.Name = "label2";
-            label2.Size = new Size(101, 25);
-            label2.TabIndex = 8;
-            label2.Text = "Password : ";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Password : ";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(9, 68);
-            label1.Name = "label1";
-            label1.Size = new Size(108, 25);
-            label1.TabIndex = 7;
-            label1.Text = "User Name :";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "User Name :";
             // 
             // userNameBox
             // 
-            userNameBox.Location = new Point(121, 62);
-            userNameBox.Name = "userNameBox";
-            userNameBox.Size = new Size(235, 31);
-            userNameBox.TabIndex = 6;
+            this.userNameBox.Location = new System.Drawing.Point(109, 50);
+            this.userNameBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.userNameBox.Name = "userNameBox";
+            this.userNameBox.Size = new System.Drawing.Size(212, 26);
+            this.userNameBox.TabIndex = 6;
             // 
             // passwordBox
             // 
-            passwordBox.Location = new Point(121, 100);
-            passwordBox.Name = "passwordBox";
-            passwordBox.Size = new Size(235, 31);
-            passwordBox.TabIndex = 5;
+            this.passwordBox.Location = new System.Drawing.Point(109, 80);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(212, 26);
+            this.passwordBox.TabIndex = 5;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(71, 145);
-            label3.Name = "label3";
-            label3.Size = new Size(44, 25);
-            label3.TabIndex = 10;
-            label3.Text = "ID : ";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(64, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "ID : ";
             // 
             // idBox
             // 
-            idBox.Location = new Point(121, 140);
-            idBox.Name = "idBox";
-            idBox.Size = new Size(235, 31);
-            idBox.TabIndex = 9;
+            this.idBox.Location = new System.Drawing.Point(109, 112);
+            this.idBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.idBox.Name = "idBox";
+            this.idBox.Size = new System.Drawing.Size(212, 26);
+            this.idBox.TabIndex = 9;
+            this.idBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.idBox_KeyPress);
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(180, 23);
-            label4.Name = "label4";
-            label4.Size = new Size(75, 25);
-            label4.TabIndex = 11;
-            label4.Text = "Register";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(162, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Register";
             // 
             // confirmButton
             // 
-            confirmButton.Location = new Point(121, 177);
-            confirmButton.Name = "confirmButton";
-            confirmButton.Size = new Size(111, 33);
-            confirmButton.TabIndex = 12;
-            confirmButton.Text = "Confirm";
-            confirmButton.UseVisualStyleBackColor = true;
-            confirmButton.Click += confirmButton_Click;
+            this.confirmButton.Location = new System.Drawing.Point(109, 153);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(100, 36);
+            this.confirmButton.TabIndex = 12;
+            this.confirmButton.Text = "Confirm";
+            this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // button2
             // 
-            button2.Location = new Point(246, 177);
-            button2.Name = "button2";
-            button2.Size = new Size(111, 33);
-            button2.TabIndex = 13;
-            button2.Text = "Cancel";
-            button2.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(221, 153);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 36);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // RegisterForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(434, 240);
-            Controls.Add(button2);
-            Controls.Add(confirmButton);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(idBox);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(userNameBox);
-            Controls.Add(passwordBox);
-            Name = "RegisterForm";
-            Text = "Register";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(391, 227);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.confirmButton);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.idBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.userNameBox);
+            this.Controls.Add(this.passwordBox);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "RegisterForm";
+            this.Text = "Register";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

@@ -15,7 +15,7 @@ namespace DemoLibrary
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@ownerID", ownerID); // Add the ownerID parameter
+                parameters.Add("@ownerID", ownerID);
 
                 var output = cnn.Query<Cage>("select * from Cages where ownerID = @ownerID", parameters);
                 return output.ToList();
@@ -28,10 +28,9 @@ namespace DemoLibrary
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@ownerID", ownerID);
-                parameters.Add("@filter", filter); // Add the filter parameter
+                parameters.Add("@filter", filter);
 
-                string query = $"SELECT * FROM Cages WHERE ownerID = @ownerID AND {columnName} = @filter";
-                var output = cnn.Query<Cage>(query, parameters);
+                var output = cnn.Query<Cage>($"SELECT * FROM Cages WHERE ownerID = @ownerID AND {columnName} = @filter ORDER BY Serial ASC", parameters);
                 return output.ToList();
             }
         }
@@ -49,7 +48,8 @@ namespace DemoLibrary
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@cageSerial", cageSerial); // Add the ownerID parameter
+                parameters.Add("@cageSerial", cageSerial);
+
                 var output = cnn.Query<Bird>($"select * from Birds where cageSerial = @cageSerial ORDER BY CAST(Serial AS INTEGER) ASC",parameters);
                 return output.ToList();
             }
@@ -60,10 +60,9 @@ namespace DemoLibrary
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@filter", filter); // Add the filter parameter
+                parameters.Add("@filter", filter);
 
-                string query = $"SELECT * FROM Birds WHERE {columnName} = @filter ORDER BY CAST(Serial AS INTEGER) ASC";
-                var output = cnn.Query<Bird>(query, parameters);
+                var output = cnn.Query<Bird>($"SELECT * FROM Birds WHERE {columnName} = @filter ORDER BY CAST(Serial AS INTEGER) ASC", parameters);
                 return output.ToList();
             }
         }
@@ -95,8 +94,7 @@ namespace DemoLibrary
                 parameters.Add("@subSpecie", subSpecie);
                 parameters.Add("@gender", gender);
 
-                string query = $"SELECT * FROM Birds WHERE cageSerial = @cageSerial AND subSpecie = @subSpecie AND gender = @gender";
-                var output = cnn.Query<string>(query, parameters);
+                var output = cnn.Query<string>($"SELECT * FROM Birds WHERE cageSerial = @cageSerial AND subSpecie = @subSpecie AND gender = @gender", parameters);
                 return output.ToList();
             }
         }

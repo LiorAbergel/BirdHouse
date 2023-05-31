@@ -19,27 +19,29 @@ namespace BirdHouseV2
             string password = passwordBox.Text;
             string id = idBox.Text;
 
+            // checks username length
             if (userName.Length < 6 || userName.Length > 8)
             {
-                MessageBox.Show("Invalide username length! \n need to be between 6 to 8 digits!");
+                MessageBox.Show("Invalid username length! \n needs to be 6 - 8 characters long !");
                 return;
             }
 
             // Check if the username contains at most 2 digitss
             int digitCount = Regex.Matches(userName, @"\d").Count;
-            if (Regex.Matches(userName, @"\d").Count > 2)
+            if (digitCount > 2)
             {
-                MessageBox.Show("Invalide username ! \n it can only contain 2 digits ");
+                MessageBox.Show("Invalid username ! \n it can only contain 2 digits ");
                 return;
             }
 
             // Check if the username contains only letters and digits
             if (!Regex.IsMatch(userName, @"^[a-zA-Z0-9]+$"))
             {
-                MessageBox.Show("Invalide username ! \n it can only contain letters and digits ");
+                MessageBox.Show("Invalid username ! \n it can only contain letters and digits");
                 return;
             }
 
+            // Before checking password content , check if length is valid
             if (password.Length >= 8 && password.Length <= 10)
             {
                 bool specialFlag = false;
@@ -47,40 +49,36 @@ namespace BirdHouseV2
                 bool charFlag = false;
                 foreach (char c in password)
                 {
-
-                    if (char.IsSymbol(c) || char.IsPunctuation(c))
-                        specialFlag = true;
-
-                    if (char.IsNumber(c))
-                        numberFlag = true;
-
-                    if (char.IsLetter(c))
-                        charFlag = true;
-
+                    if (specialFlag && numberFlag && charFlag) break;
+                    else if (char.IsSymbol(c) || char.IsPunctuation(c)) specialFlag = true;
+                    else if (char.IsNumber(c)) numberFlag = true;
+                    else if (char.IsLetter(c)) charFlag = true;
                 }
-                if (specialFlag == false)
+
+                if (!specialFlag)
                 {
-                    MessageBox.Show("Invalid password! \n need to contain at least 1 special character!");
+                    MessageBox.Show("Invalid password! \n needs to contain at least 1 special character!");
                     return;
                 }
-                if (numberFlag == false)
+                if (!numberFlag)
                 {
-                    MessageBox.Show("Invalid password! \n need to contain at least 1 number!");
+                    MessageBox.Show("Invalid password! \n needs to contain at least 1 number!");
                     return;
                 }
-                if (charFlag == false)
+                if (!charFlag)
                 {
-                    MessageBox.Show("Invalid password! \n need to contain at least 1 letter!");
+                    MessageBox.Show("Invalid password! \n needs to contain at least 1 letter!");
                     return;
                 }
 
             }
             else
             {
-                MessageBox.Show("Invalid password length! \n need to be between 8 to 10 digits!");
+                MessageBox.Show("Invalid password length! \n needs to be 8 - 10 characters long!");
                 return;
             }
 
+            // Before checking ID content , check if length is valid
             if (id.Length >= 7 && id.Length <= 9)
             {
                 foreach (char c in id)
@@ -94,7 +92,7 @@ namespace BirdHouseV2
             }
             else
             {
-                MessageBox.Show("Invalid ID length! should be 7 to 8 digits");
+                MessageBox.Show("Invalid ID length! should be 7 - 8 digits long !");
                 return;
             }
 
@@ -104,32 +102,53 @@ namespace BirdHouseV2
                 // Get the first worksheet
                 ExcelWorksheet worksheet = usersFile.Workbook.Worksheets[0];
 
+                bool IDExists = false;
+                bool userNameExists = false;
                 int rowCount = worksheet.Dimension.Rows;
                 for (int row = 2; row <= rowCount + 1; row++)
                 {
                     if (worksheet.Cells[row, 1].Value == null)
                     {
-                        worksheet.Cells[row, 1].Value = id;
-                        worksheet.Cells[row, 2].Value = userName;
-                        worksheet.Cells[row, 3].Value = password;
-                        usersFile.Save();
-                        MessageBox.Show("Register Successful !");
-                        Close();
+                        if (!IDExists && !userNameExists)
+                        {
+                            worksheet.Cells[row, 1].Value = id;
+                            worksheet.Cells[row, 2].Value = userName;
+                            worksheet.Cells[row, 3].Value = password;
+
+                            usersFile.Save();
+                            MessageBox.Show("Register Successful !");
+                            Close();
+                        }
+
+                        else if (IDExists)
+                        {
+                            MessageBox.Show("ID already registered !");
+                            return;
+                        }
+
+                        else if (userNameExists)
+                        {
+                            MessageBox.Show("Username already registered !");
+                            return;
+                        }
+                    
+                    }
+                    else
+                    {
+                        if (worksheet.Cells[row, 1].Value.ToString() == id) IDExists = true;
+                        if (worksheet.Cells[row, 2].Value.ToString() == userName) userNameExists = true;
                     }
                 }
             }
         }
-    
-        private void RegisterForm_Load(object sender, EventArgs e)
-        {
-            // this line adds an event handler to detect this form closing
-            this.FormClosing += new FormClosingEventHandler(this.RegisterForm_FormClosing);
-        }
 
-        private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void idBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // this method is activated when the form is closed , it closes the excel file
+            // Check if the pressed key is a digit or a control key (e.g., backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Reject the keypress event
+            }
         }
-
     }
 }

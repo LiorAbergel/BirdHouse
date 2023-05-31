@@ -86,10 +86,10 @@ namespace BirdHouseV2
             Bird birdToSave;
             string cageSerialInput = isCageForm ? cageSerial :CageSerialComboBox.SelectedItem.ToString() ;
 
-            if (FatherSerialComboBox.SelectedItem.ToString() != "None" && MotherSerialComboBox.SelectedItem.ToString() != "None")
+            if (FatherSerialComboBox.SelectedItem?.ToString() != "None" && MotherSerialComboBox.SelectedItem?.ToString() != "None")
             {
                 birdToSave = new Bird(serialTextBox.Text, specieComboBox.SelectedItem as string, subSpeciesComboBox.SelectedItem as string,
-                    hatchDateTimePicker.Text, genderComboBox.SelectedItem as string, cageSerialInput,
+                    hatchDateTimePicker.Value.Date, genderComboBox.SelectedItem as string, cageSerialInput,
                     FatherSerialComboBox.SelectedItem as string, MotherSerialComboBox.SelectedItem as string);
             }
 
@@ -108,7 +108,7 @@ namespace BirdHouseV2
             else
             {
                 birdToSave = new Bird(serialTextBox.Text, specieComboBox.SelectedItem as string, subSpeciesComboBox.SelectedItem as string,
-                    hatchDateTimePicker.Text, genderComboBox.SelectedItem as string, cageSerialInput, null,null);
+                    hatchDateTimePicker.Value.Date, genderComboBox.SelectedItem as string, cageSerialInput, null,null);
             }
 
             if (birdToSave != null)

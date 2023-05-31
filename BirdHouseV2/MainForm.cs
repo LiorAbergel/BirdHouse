@@ -245,8 +245,7 @@ namespace BirdHouseV2
                     return;
                 }
 
-                CageGridView.DataSource = Cages;
-                CageGridView.Sort(CageGridView.Columns["Serial"], ListSortDirection.Ascending);
+                WireUpCagesList();
             }
 
             else if (birdRadioButton.Checked)
