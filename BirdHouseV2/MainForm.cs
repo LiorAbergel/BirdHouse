@@ -187,7 +187,7 @@ namespace BirdHouseV2
 
         }
 
-        private void AddBirdButton_Click(object sender, EventArgs e)
+        private void OpenCageButton_Click(object sender, EventArgs e)
         {
             // first check if a cage was selected , if not , show a message to user 
             if (CageGridView.SelectedRows.Count > 0)
@@ -197,7 +197,7 @@ namespace BirdHouseV2
             }
             else
             {
-                MessageBox.Show("Please select a cage to add birds !");
+                MessageBox.Show("Please select a cage to open !");
                 return;
             }
         }
@@ -334,6 +334,19 @@ namespace BirdHouseV2
             {
                 e.Handled = true; // Reject the keypress event
             }
+        }
+
+        private void EditCageButton_Click(object sender, EventArgs e)
+        {
+            var editCageForm = new EditCageForm(cageSerial);
+            editCageForm.ShowDialog();
+
+            LoadCageList();
+        }
+
+        private void MaterialComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -99,5 +99,67 @@ namespace DemoLibrary
             }
         }
 
+        public static Cage GetCage(string cageSerial)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@cageSerial", cageSerial);
+
+                var output = cnn.QueryFirstOrDefault<Cage>("SELECT * FROM Cages WHERE Serial = @cageSerial LIMIT 1", parameters);
+                return output;
+            }
+        }
+
+        public static Bird GetBird(string birdSerial)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@birdSerial", birdSerial);
+
+                var output = cnn.QueryFirstOrDefault<Bird>("SELECT * FROM Birds WHERE serial = @birdSerial LIMIT 1");
+                return output;
+            }
+        }
+
+        public static void SetCage(string cageSerial, Cage newCage)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Serial", newCage.Serial);
+                parameters.Add("@Length", newCage.Length);
+                parameters.Add("@Width", newCage.Width);
+                parameters.Add("@Height", newCage.Height);
+                parameters.Add("@cageSerial", cageSerial);
+
+                cnn.Execute("UPDATE Cages SET Serial = @Serial, Length = @Length, Width = @Width, Height = @Height WHERE Serial = @cageSerial", parameters);
+            }
+        }
+
+        public static void SetBird(string birdSerial, Bird newBird)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@serial", newBird.Serial);
+                parameters.Add("@specie", newBird.Specie);
+                parameters.Add("@subSpecie", newBird.SubSpecie);
+                parameters.Add("@hatchDate", newBird.HatchDate);
+                parameters.Add("@gender", newBird.Gender);
+                parameters.Add("@cageSerial", newBird.CageSerial);
+                parameters.Add("@fatherSerial", newBird.FatherSerial);
+                parameters.Add("@motherSerial", newBird.MotherSerial);
+                parameters.Add("@birdSerial", birdSerial);
+
+                cnn.Execute("UPDATE Birds SET serial = @serial, specie = @specie, subSpecie = @subSpecie, hatchDate = @hatchDate, gender = @gender," +
+                    " cageSerial = @cageSerial, fatherSerial = @fatherSerial, motherSerial = @motherSerial WHERE serial = @birdSerial", parameters);
+            }
+        }
+
+
+
+
     }
 }

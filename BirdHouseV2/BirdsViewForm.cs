@@ -1,11 +1,9 @@
 ﻿using DemoLibrary;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using static DemoLibrary.Bird;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BirdHouseV2
 {

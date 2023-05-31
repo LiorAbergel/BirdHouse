@@ -73,6 +73,18 @@
     <Compile Include="BirdsViewForm.Designer.cs">
       <DependentUpon>BirdsViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditBirdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBirdForm.Designer.cs">
+      <DependentUpon>EditBirdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditCageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCageForm.Designer.cs">
+      <DependentUpon>EditCageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +107,12 @@
     </Compile>
     <EmbeddedResource Include="BirdsViewForm.resx">
       <DependentUpon>BirdsViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditBirdForm.resx">
+      <DependentUpon>EditBirdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCageForm.resx">
+      <DependentUpon>EditCageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>

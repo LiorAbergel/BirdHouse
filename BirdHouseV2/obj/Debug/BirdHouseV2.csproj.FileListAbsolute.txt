@@ -106,3 +106,4 @@ C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\Bird
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.exe
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.pdb
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.BirdsViewForm.resources
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.EditCageForm.resources
