@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -61,20 +60,13 @@ namespace DemoLibrary
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                if (columnName == "HatchDate")
-                    filter += " 00:00:00";
-
                 var parameters = new DynamicParameters();
                 parameters.Add("@filter", filter);
-
 
                 var output = cnn.Query<Bird>($"SELECT * FROM Birds WHERE {columnName} = @filter ORDER BY CAST(Serial AS INTEGER) ASC", parameters);
                 return output.ToList();
             }
         }
-
-
-
 
         public static void SaveBirds(Bird bird)
         {
@@ -218,35 +210,6 @@ namespace DemoLibrary
                     command.ExecuteNonQuery();
                 }
             }
-        }
-
-        public static List<string> GetHatchDatesByOwnerID(string ownerID)
-        {
-            List<string> hatchDates = new List<string>();
-
-            using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
-            {
-                connection.Open();
-
-                using (SQLiteCommand command = new SQLiteCommand("SELECT hatchDate FROM Birds " +
-                                                                 "INNER JOIN Cages ON Birds.cageSerial = Cages.Serial " +
-                                                                 "WHERE Cages.ownerId = @ownerId", connection))
-                {
-                    command.Parameters.AddWithValue("@ownerId", ownerID);
-
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            DateTime hatchDate = reader.GetDateTime(0);
-                            string hatchDateString = hatchDate.ToString("yyyy-MM-dd"); // Format the date as desired
-                            hatchDates.Add(hatchDateString);
-                        }
-                    }
-                }
-            }
-
-            return hatchDates.Distinct().ToList();
         }
 
 
