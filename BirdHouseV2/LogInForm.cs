@@ -49,6 +49,7 @@ namespace BirdHouseV2
                 // Initioalize range of search
                 ExcelRangeBase range = worksheet.Cells[2, 1, endCell.Row, endCell.Column];
 
+                // TODO : add input checking
                 string userName = userNameBox.Text;
                 string password = passwordBox.Text;
 
@@ -124,15 +125,6 @@ namespace BirdHouseV2
         {
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
-        }
-
-        private void userNameBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Check if the pressed key is a digit, a letter, or a control key (e.g., backspace)
-            if (!char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true; // Reject the keypress event
-            }
         }
     }
 }

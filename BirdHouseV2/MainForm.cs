@@ -150,7 +150,7 @@ namespace BirdHouseV2
         private void BirdRadioButton_Click(object sender, EventArgs e)
         {
             categoryComboBox.Items.Clear();
-            categoryComboBox.Items.AddRange(new string[] { "Serial", "Specie", "HatchDate", "Gender" });
+            categoryComboBox.Items.AddRange(new string[] { "Serial", "Specie", "Hatch Date", "Gender" });
 
             subCategoryComboBox.Text = "";
             subCategoryComboBox.Items.Clear();
@@ -180,9 +180,9 @@ namespace BirdHouseV2
                 switch (input)
                 {
                     case "Serial":
-                        subCategoryComboBox.Items.Clear();
                         subCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDown;
                         subCategoryComboBox.Text = "Please enter a bird serial";
+                        // TODO : birds serial can only contain digits !
                         break;
 
                     case "Specie":
@@ -191,10 +191,10 @@ namespace BirdHouseV2
                         subCategoryComboBox.Items.AddRange(Enum.GetNames(typeof(Species)));
                         break;
 
-                    case "HatchDate":
+                    case "Hatch Date":
                         subCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
                         subCategoryComboBox.Items.Clear();
-                        subCategoryComboBox.Items.AddRange(SqliteDataAccess.GetHatchDatesByOwnerID(ownerID).ToArray());
+                        // TODO : get all hatch dates of user's birds from db
                         break;
 
                     case "Gender":
@@ -274,7 +274,7 @@ namespace BirdHouseV2
 
             else if (birdRadioButton.Checked)
             {
-                List<Bird> birds = null;
+                List<Bird> birds= new List<Bird>();
 
                 string category = categoryComboBox.SelectedItem as string;
 
@@ -290,8 +290,9 @@ namespace BirdHouseV2
                     birds = SqliteDataAccess.SearchBirds(serial, category);
                 }
 
-                else if (category == "HatchDate")
+                else if (category == "Hatch Date")
                 {
+                    //TODO : complete search by date
                     string hatchDate = subCategoryComboBox.SelectedItem as string;
                     birds = SqliteDataAccess.SearchBirds(hatchDate, category);
                 }

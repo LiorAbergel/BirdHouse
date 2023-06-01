@@ -139,13 +139,6 @@ namespace BirdHouseV2
                 }
             }
 
-            // check if hatch date input is later than today
-            if (hatchDateInput > DateTime.Now.Date)
-            {
-                MessageBox.Show("Hatch date can't be later than today !");
-                return;
-            }
-
             string specieInput = specieComboBox.SelectedItem as string,
                 subSpecieInput = subSpeciesComboBox.SelectedItem as string, genderInput = genderComboBox.SelectedItem as string;
 

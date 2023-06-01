@@ -76,7 +76,6 @@ namespace BirdHouseV2
         private void WireUpBirdsList()
         {
             BirdGridView.DataSource = Birds;
-            BirdGridView.Columns["HatchDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
         }
 
 
@@ -126,13 +125,6 @@ namespace BirdHouseV2
                     MessageBox.Show("Child hatch date can't be earlier than his mother !");
                     return;
                 }
-            }
-
-            // check if hatch date input is later than today
-            if (hatchDateInput > DateTime.Now.Date)
-            {
-                MessageBox.Show("Hatch date can't be later than today !");
-                return;
             }
 
             string serialInput = serialTextBox.Text, specieInput = specieComboBox.SelectedItem as string,
@@ -218,6 +210,8 @@ namespace BirdHouseV2
 
         public void LoadParentsSerials()
         {
+            // TODO : check if this method works if isBirdsForm
+
             // Clear existing items before adding new ones
             FatherSerialComboBox.Items.Clear();
             MotherSerialComboBox.Items.Clear();
