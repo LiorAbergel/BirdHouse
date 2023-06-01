@@ -1,0 +1,72 @@
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\DemoLibrary.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\DemoLibrary.pdb
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.csproj.AssemblyReference.cache
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.pdb
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\DemoLibrary.dll.config
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\Dapper.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\Dapper.xml
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.xml
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.xml
+C:\Users\Daniel\Desktop\Software Engineer\Coding\Assignment4\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.csproj.CopyComplete
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\DemoLibrary.dll.config
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\DemoLibrary.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\DemoLibrary.pdb
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\Dapper.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\Dapper.xml
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.xml
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\bin\Debug\System.Data.SQLite.xml
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.csproj.AssemblyReference.cache
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.csproj.CoreCompileInputs.cache
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.csproj.CopyComplete
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.dll
+C:\Users\liora\Downloads\BirdHouseV2\DemoLibrary\obj\Debug\DemoLibrary.pdb
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\DemoLibrary.dll.config
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\DemoLibrary.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\DemoLibrary.pdb
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\Dapper.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\Dapper.xml
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.xml
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.xml
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.csproj.AssemblyReference.cache
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.csproj.CopyComplete
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.dll
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.pdb
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\DemoLibrary.dll.config
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\DemoLibrary.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\DemoLibrary.pdb
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\Dapper.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\Dapper.xml
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.xml
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\bin\Debug\System.Data.SQLite.xml
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.csproj.AssemblyReference.cache
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.csproj.CoreCompileInputs.cache
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.csproj.CopyComplete
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.dll
+C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\DemoLibrary\obj\Debug\DemoLibrary.pdb
