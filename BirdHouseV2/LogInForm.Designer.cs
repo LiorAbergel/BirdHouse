@@ -148,6 +148,7 @@ namespace BirdHouseV2
             this.userNameBox.Size = new System.Drawing.Size(249, 32);
             this.userNameBox.TabIndex = 2;
             this.userNameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.userNameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userNameBox_KeyPress);
             // 
             // pictureBox2
             // 
