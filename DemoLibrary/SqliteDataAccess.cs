@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -118,7 +119,7 @@ namespace DemoLibrary
                 var parameters = new DynamicParameters();
                 parameters.Add("@birdSerial", birdSerial);
 
-                var output = cnn.QueryFirstOrDefault<Bird>("SELECT * FROM Birds WHERE serial = @birdSerial LIMIT 1");
+                var output = cnn.QueryFirstOrDefault<Bird>("SELECT * FROM Birds WHERE serial = @birdSerial LIMIT 1", parameters);
                 return output;
             }
         }
@@ -157,6 +158,63 @@ namespace DemoLibrary
                     " cageSerial = @cageSerial, fatherSerial = @fatherSerial, motherSerial = @motherSerial WHERE serial = @birdSerial", parameters);
             }
         }
+
+        public static bool IsBirdSerialExist(string ownerID, string birdSerial)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand("SELECT COUNT(*) FROM Birds " +
+                    "INNER JOIN Cages ON Birds.cageSerial = Cages.Serial " +
+                    "WHERE Birds.serial = @birdSerial AND Cages.OwnerId = @ownerId", connection))
+                {
+                    command.Parameters.AddWithValue("@birdSerial", birdSerial);
+                    command.Parameters.AddWithValue("@ownerId", ownerID);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+
+                    return count > 0;
+                }
+            }
+        }
+
+        public static bool IsCageSerialExist(string ownerID, string cageSerial)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand("SELECT COUNT(*) FROM Cages " +
+                    "WHERE Serial = @cageSerial AND ownerId = @ownerId", connection))
+                {
+                    command.Parameters.AddWithValue("@cageSerial", cageSerial);
+                    command.Parameters.AddWithValue("@ownerId", ownerID);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+
+                    return count > 0;
+                }
+            }
+        }
+
+        public static void ChangeBirdsCageSerial(string oldCageSerial, string newCageSerial)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand("UPDATE Birds SET cageSerial = @newCageSerial WHERE cageSerial = @oldCageSerial", connection))
+                {
+                    command.Parameters.AddWithValue("@newCageSerial", newCageSerial);
+                    command.Parameters.AddWithValue("@oldCageSerial", oldCageSerial);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
 
 
 

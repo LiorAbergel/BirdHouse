@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.hatchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.subSpeciesComboBox = new System.Windows.Forms.ComboBox();
@@ -51,6 +51,7 @@
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.AddChildToBirdButton = new System.Windows.Forms.Button();
+            this.EditBirdButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BirdGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -159,14 +160,14 @@
             this.BirdGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BirdGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.BirdGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.142858F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BirdGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.142858F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BirdGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.BirdGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BirdGridView.Location = new System.Drawing.Point(0, 0);
             this.BirdGridView.MultiSelect = false;
@@ -174,6 +175,7 @@
             this.BirdGridView.RowHeadersWidth = 62;
             this.BirdGridView.Size = new System.Drawing.Size(762, 547);
             this.BirdGridView.TabIndex = 43;
+            this.BirdGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.BirdGridView_RowHeaderMouseDoubleClick);
             // 
             // panel1
             // 
@@ -303,6 +305,16 @@
             this.AddChildToBirdButton.UseVisualStyleBackColor = true;
             this.AddChildToBirdButton.Click += new System.EventHandler(this.AddChildToBirdButton_Click);
             // 
+            // EditBirdButton
+            // 
+            this.EditBirdButton.Location = new System.Drawing.Point(584, 22);
+            this.EditBirdButton.Name = "EditBirdButton";
+            this.EditBirdButton.Size = new System.Drawing.Size(145, 57);
+            this.EditBirdButton.TabIndex = 65;
+            this.EditBirdButton.Text = "Edit Bird";
+            this.EditBirdButton.UseVisualStyleBackColor = true;
+            this.EditBirdButton.Click += new System.EventHandler(this.EditBirdButton_Click);
+            // 
             // BirdsViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -310,6 +322,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::BirdHouseV2.Properties.Resources.background_2;
             this.ClientSize = new System.Drawing.Size(892, 603);
+            this.Controls.Add(this.EditBirdButton);
             this.Controls.Add(this.AddChildToBirdButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
@@ -352,5 +365,6 @@
         private System.Windows.Forms.Label FatherSerialLabel;
         private System.Windows.Forms.ComboBox MotherSerialComboBox;
         private System.Windows.Forms.Label MotherSerialLabel;
+        private System.Windows.Forms.Button EditBirdButton;
     }
 }

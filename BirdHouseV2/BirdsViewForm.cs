@@ -81,41 +81,75 @@ namespace BirdHouseV2
 
         private void AddBirdButton_Click(object sender, EventArgs e)
         {
-            Bird birdToSave;
             string cageSerialInput = isCageForm ? cageSerial :CageSerialComboBox.SelectedItem.ToString() ;
 
-            if (FatherSerialComboBox.SelectedItem?.ToString() != "None" && MotherSerialComboBox.SelectedItem?.ToString() != "None")
+            if (SqliteDataAccess.IsBirdSerialExist(ownerID, serialTextBox.Text))
             {
-                birdToSave = new Bird(serialTextBox.Text, specieComboBox.SelectedItem as string, subSpeciesComboBox.SelectedItem as string,
-                    hatchDateTimePicker.Value.Date, genderComboBox.SelectedItem as string, cageSerialInput,
-                    FatherSerialComboBox.SelectedItem as string, MotherSerialComboBox.SelectedItem as string);
+                MessageBox.Show("You already have a bird with this serial, please enter a different serial number");
+                return;
             }
 
-            else if (FatherSerialComboBox.SelectedItem.ToString() != "None" && MotherSerialComboBox.SelectedItem.ToString() == "None")
+            // if the user selected "None" in one of the parent's combo boxes , null value will be assigned
+            string fatherSerialInput = FatherSerialComboBox.SelectedItem?.ToString() != "None" ?
+                FatherSerialComboBox.SelectedItem?.ToString() : null;
+            string motherSerialInput = MotherSerialComboBox.SelectedItem?.ToString() != "None" ?
+                MotherSerialComboBox.SelectedItem?.ToString() : null;
+            DateTime hatchDateInput = hatchDateTimePicker.Value.Date;
+
+            if (fatherSerialInput != null && motherSerialInput == null)
             {
                 MessageBox.Show("Father Serial was entred but mother serial wasn't !");
                 return;
             }
 
-            else if (FatherSerialComboBox.SelectedItem.ToString() == "None" && MotherSerialComboBox.SelectedItem.ToString() != "None")
+            else if (fatherSerialInput == null && motherSerialInput != null)
             {
                 MessageBox.Show("Mother Serial was entred but father serial wasn't !");
                 return;
             }
 
-            else
+            // if the user entered a father and a mother, check if their hatch dates are earlier than child
+            else if (fatherSerialInput != null && motherSerialInput != null)
             {
-                birdToSave = new Bird(serialTextBox.Text, specieComboBox.SelectedItem as string, subSpeciesComboBox.SelectedItem as string,
-                    hatchDateTimePicker.Value.Date, genderComboBox.SelectedItem as string, cageSerialInput, null,null);
+                Bird Father = SqliteDataAccess.GetBird(fatherSerialInput);
+                Bird Mother = SqliteDataAccess.GetBird(motherSerialInput);
+
+                if (hatchDateInput <= Father.HatchDate)
+                {
+                    MessageBox.Show("Child hatch date can't be earlier than his father !");
+                    return;
+                }
+
+                else if (hatchDateInput <= Mother.HatchDate)
+                {
+                    MessageBox.Show("Child hatch date can't be earlier than his mother !");
+                    return;
+                }
+            }
+
+            string serialInput = serialTextBox.Text, specieInput = specieComboBox.SelectedItem as string,
+                subSpecieInput = subSpeciesComboBox.SelectedItem as string, genderInput = genderComboBox.SelectedItem as string;
+
+            Bird birdToSave = null;
+            if (serialInput != null && specieInput != null && subSpecieInput != null && hatchDateInput != null &&
+                genderInput != null && cageSerialInput != null)
+            {
+                birdToSave = new Bird(serialInput, specieInput, subSpecieInput, hatchDateInput, genderInput,
+                                cageSerialInput, fatherSerialInput, motherSerialInput);
             }
 
             if (birdToSave != null)
             {
                 SqliteDataAccess.SaveBirds(birdToSave);
                 MessageBox.Show("Bird added successfully !");
+                LoadBirdsList();
             }
 
-            LoadBirdsList();
+            else
+            {
+                MessageBox.Show("One or more of the fields was not entered , please try again !");
+                return;
+            }
         }
 
         private void SpecieComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -168,6 +202,10 @@ namespace BirdHouseV2
             {
                 e.Handled = true; // Reject the keypress event
             }
+        }
+        private void CageSerialComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LoadParentsSerials();
         }
 
         public void LoadParentsSerials()
@@ -226,8 +264,7 @@ namespace BirdHouseV2
                 specieComboBox.SelectedItem = selectedRow[1].Value;
                 subSpeciesComboBox.SelectedItem = selectedRow[2].Value;
 
-                // TODO : check if child hatch date is earlier than parents hatch date
-
+                serialTextBox.Clear();
                 FatherSerialComboBox.SelectedItem = null;
                 MotherSerialComboBox.SelectedItem = null;
 
@@ -258,9 +295,29 @@ namespace BirdHouseV2
 
         }
 
-        private void CageSerialComboBox_SelectedValueChanged(object sender, EventArgs e)
+        private void EditBirdButton_Click(object sender, EventArgs e)
         {
-            LoadParentsSerials();
+            if (BirdGridView.SelectedRows.Count > 0)
+            {
+                var selectedRow = BirdGridView.SelectedRows[0].Cells;
+                var editBirdForm = new EditBirdForm(selectedRow[0].Value.ToString(), ownerID);
+                editBirdForm.ShowDialog();
+                LoadBirdsList();
+            }
+
+            else
+            {
+                MessageBox.Show("Please select a bird to edit !");
+                return;
+            }
+        }
+
+        private void BirdGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var selectedRow = BirdGridView.SelectedRows[0].Cells;
+            var editBirdForm = new EditBirdForm(selectedRow[0].Value.ToString(), ownerID);
+            editBirdForm.ShowDialog();
+            LoadBirdsList();
         }
     }
 }

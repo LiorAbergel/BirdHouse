@@ -26,6 +26,30 @@ namespace BirdHouseV2
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             string serial = SerialNumberTextBox.Text;
+
+            if (serial != Cage.Serial && SqliteDataAccess.IsCageSerialExist(Cage.OwnerID, serial))
+            {
+                MessageBox.Show("You already have a cage with this serial, please enter a different serial number");
+                return;
+            }
+
+            if (serial.Length > 0)
+            {
+                foreach (char c in serial)
+                {
+                    if (!(char.IsNumber(c) || char.IsLetter(c)))
+                    {
+                        MessageBox.Show("Invalid serial ! \n just numbers and letters allowed!");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter Serial!");
+                return;
+            }
+
             if (!(MaterialComboBox.SelectedItem is string material))
             {
                 MessageBox.Show("Enter Material!");
@@ -37,9 +61,9 @@ namespace BirdHouseV2
             {
                 foreach (char c in length)
                 {
-                    if (!(char.IsNumber(c)))
+                    if (!(char.IsNumber(c) || char.IsLetter(c)))
                     {
-                        MessageBox.Show("Invalid Length! \n just numbers allowed !");
+                        MessageBox.Show("Invalid Legnth! \njust numbers and letters allowed!");
                         return;
                     }
                 }
@@ -75,7 +99,7 @@ namespace BirdHouseV2
                 {
                     if (!(char.IsNumber(c)))
                     {
-                        MessageBox.Show("Invalid Height! \nonly numbers allowed!");
+                        MessageBox.Show("Invalid Height! \njust numbers allowed!");
                         return;
                     }
                 }
@@ -86,11 +110,22 @@ namespace BirdHouseV2
                 return;
             }
 
-            Cage newCage = new Cage(Cage.OwnerID, serial, length, width, height, material);
-            SqliteDataAccess.SetCage(Cage.Serial, newCage);
+            if (Cage.Serial != serial) SqliteDataAccess.ChangeBirdsCageSerial(Cage.Serial, serial);
 
-            MessageBox.Show("Cage edited successfully !");
-            Close();
+            Cage newCage = new Cage(Cage.OwnerID, serial, length, width, height, material);
+
+            if (newCage != null)
+            {
+                SqliteDataAccess.SetCage(Cage.Serial, newCage);
+                MessageBox.Show("Cage edited successfully !");
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong :( the cage could not be edited !");
+                return;
+            }
+
         }
     }
 }

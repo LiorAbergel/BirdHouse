@@ -44,13 +44,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.specieComboBox = new System.Windows.Forms.ComboBox();
             this.subSpeciesComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ConfirmButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MotherSerialComboBox
             // 
             this.MotherSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MotherSerialComboBox.FormattingEnabled = true;
-            this.MotherSerialComboBox.Location = new System.Drawing.Point(289, 490);
+            this.MotherSerialComboBox.Location = new System.Drawing.Point(136, 553);
             this.MotherSerialComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.MotherSerialComboBox.Name = "MotherSerialComboBox";
             this.MotherSerialComboBox.Size = new System.Drawing.Size(142, 28);
@@ -59,7 +61,7 @@
             // MotherSerialLabel
             // 
             this.MotherSerialLabel.AutoSize = true;
-            this.MotherSerialLabel.Location = new System.Drawing.Point(284, 468);
+            this.MotherSerialLabel.Location = new System.Drawing.Point(131, 531);
             this.MotherSerialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MotherSerialLabel.Name = "MotherSerialLabel";
             this.MotherSerialLabel.Size = new System.Drawing.Size(103, 20);
@@ -70,7 +72,7 @@
             // 
             this.FatherSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FatherSerialComboBox.FormattingEnabled = true;
-            this.FatherSerialComboBox.Location = new System.Drawing.Point(289, 432);
+            this.FatherSerialComboBox.Location = new System.Drawing.Point(136, 495);
             this.FatherSerialComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.FatherSerialComboBox.Name = "FatherSerialComboBox";
             this.FatherSerialComboBox.Size = new System.Drawing.Size(142, 28);
@@ -80,16 +82,17 @@
             // 
             this.CageSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CageSerialComboBox.FormattingEnabled = true;
-            this.CageSerialComboBox.Location = new System.Drawing.Point(290, 370);
+            this.CageSerialComboBox.Location = new System.Drawing.Point(137, 433);
             this.CageSerialComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.CageSerialComboBox.Name = "CageSerialComboBox";
             this.CageSerialComboBox.Size = new System.Drawing.Size(142, 28);
             this.CageSerialComboBox.TabIndex = 83;
+            this.CageSerialComboBox.SelectedValueChanged += new System.EventHandler(this.CageSerialComboBox_SelectedIndexChanged);
             // 
             // FatherSerialLabel
             // 
             this.FatherSerialLabel.AutoSize = true;
-            this.FatherSerialLabel.Location = new System.Drawing.Point(285, 410);
+            this.FatherSerialLabel.Location = new System.Drawing.Point(132, 473);
             this.FatherSerialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FatherSerialLabel.Name = "FatherSerialLabel";
             this.FatherSerialLabel.Size = new System.Drawing.Size(100, 20);
@@ -99,7 +102,7 @@
             // CageSerialLabel
             // 
             this.CageSerialLabel.AutoSize = true;
-            this.CageSerialLabel.Location = new System.Drawing.Point(285, 348);
+            this.CageSerialLabel.Location = new System.Drawing.Point(132, 411);
             this.CageSerialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CageSerialLabel.Name = "CageSerialLabel";
             this.CageSerialLabel.Size = new System.Drawing.Size(91, 20);
@@ -110,7 +113,7 @@
             // 
             this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.FormattingEnabled = true;
-            this.genderComboBox.Location = new System.Drawing.Point(290, 305);
+            this.genderComboBox.Location = new System.Drawing.Point(137, 368);
             this.genderComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(142, 28);
@@ -118,7 +121,7 @@
             // 
             // serialTextBox
             // 
-            this.serialTextBox.Location = new System.Drawing.Point(290, 70);
+            this.serialTextBox.Location = new System.Drawing.Point(137, 133);
             this.serialTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.serialTextBox.Name = "serialTextBox";
             this.serialTextBox.Size = new System.Drawing.Size(142, 26);
@@ -127,7 +130,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(286, 106);
+            this.label9.Location = new System.Drawing.Point(133, 169);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 20);
@@ -137,7 +140,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(288, 224);
+            this.label8.Location = new System.Drawing.Point(135, 287);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 20);
@@ -147,7 +150,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(286, 283);
+            this.label7.Location = new System.Drawing.Point(133, 346);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 20);
@@ -156,7 +159,7 @@
             // 
             // hatchDateTimePicker
             // 
-            this.hatchDateTimePicker.Location = new System.Drawing.Point(287, 247);
+            this.hatchDateTimePicker.Location = new System.Drawing.Point(134, 310);
             this.hatchDateTimePicker.Name = "hatchDateTimePicker";
             this.hatchDateTimePicker.Size = new System.Drawing.Size(144, 26);
             this.hatchDateTimePicker.TabIndex = 78;
@@ -164,7 +167,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(286, 47);
+            this.label10.Location = new System.Drawing.Point(133, 110);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 20);
@@ -174,7 +177,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(286, 171);
+            this.label11.Location = new System.Drawing.Point(133, 234);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 20);
@@ -185,28 +188,56 @@
             // 
             this.specieComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.specieComboBox.FormattingEnabled = true;
-            this.specieComboBox.Location = new System.Drawing.Point(290, 130);
+            this.specieComboBox.Location = new System.Drawing.Point(137, 193);
             this.specieComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.specieComboBox.Name = "specieComboBox";
             this.specieComboBox.Size = new System.Drawing.Size(142, 28);
             this.specieComboBox.TabIndex = 75;
-            this.specieComboBox.SelectedValueChanged += new System.EventHandler(this.specieComboBox_SelectedValueChanged);
+            this.specieComboBox.SelectedValueChanged += new System.EventHandler(this.specieComboBox_SelectedIndexChanged);
             // 
             // subSpeciesComboBox
             // 
             this.subSpeciesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.subSpeciesComboBox.FormattingEnabled = true;
-            this.subSpeciesComboBox.Location = new System.Drawing.Point(290, 196);
+            this.subSpeciesComboBox.Location = new System.Drawing.Point(137, 259);
             this.subSpeciesComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.subSpeciesComboBox.Name = "subSpeciesComboBox";
             this.subSpeciesComboBox.Size = new System.Drawing.Size(142, 28);
             this.subSpeciesComboBox.TabIndex = 76;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Bahnschrift", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(133, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 31);
+            this.label6.TabIndex = 86;
+            this.label6.Text = "Edit Bird";
+            // 
+            // ConfirmButton
+            // 
+            this.ConfirmButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConfirmButton.BackColor = System.Drawing.Color.Transparent;
+            this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConfirmButton.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.ConfirmButton.Location = new System.Drawing.Point(121, 602);
+            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ConfirmButton.Name = "ConfirmButton";
+            this.ConfirmButton.Size = new System.Drawing.Size(170, 57);
+            this.ConfirmButton.TabIndex = 87;
+            this.ConfirmButton.Text = "Confirm";
+            this.ConfirmButton.UseVisualStyleBackColor = false;
+            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
+            // 
             // EditBirdForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 711);
+            this.ClientSize = new System.Drawing.Size(427, 711);
+            this.Controls.Add(this.ConfirmButton);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.MotherSerialComboBox);
             this.Controls.Add(this.MotherSerialLabel);
             this.Controls.Add(this.FatherSerialComboBox);
@@ -225,7 +256,6 @@
             this.Controls.Add(this.subSpeciesComboBox);
             this.Name = "EditBirdForm";
             this.Text = "EditBirdForm";
-            this.Load += new System.EventHandler(this.EditBirdForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,5 +279,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox specieComboBox;
         private System.Windows.Forms.ComboBox subSpeciesComboBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button ConfirmButton;
     }
 }
