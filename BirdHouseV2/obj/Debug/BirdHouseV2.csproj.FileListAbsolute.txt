@@ -75,7 +75,6 @@ C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHous
 C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.csproj.CopyComplete
 C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.exe
 C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.pdb
-C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.BirdsForm.resources
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\bin\Debug\BirdHouseV2.exe.config
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\bin\Debug\BirdHouseV2.exe
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\bin\Debug\BirdHouseV2.pdb
@@ -108,3 +107,7 @@ C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\Bird
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.BirdsViewForm.resources
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.EditCageForm.resources
 C:\Users\liora\OneDrive\מסמכים\GitHub\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.EditBirdForm.resources
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.BirdsViewForm.resources
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.EditBirdForm.resources
+C:\Users\Daniel\Desktop\GitProjects\DRW\BirdHouse\BirdHouseV2\obj\Debug\BirdHouseV2.EditCageForm.resources

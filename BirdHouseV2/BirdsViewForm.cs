@@ -141,7 +141,7 @@ namespace BirdHouseV2
             if (birdToSave != null)
             {
                 SqliteDataAccess.SaveBirds(birdToSave);
-                MessageBox.Show("Bird added successfully !");
+                //MessageBox.Show("Bird added successfully !");
                 LoadBirdsList();
             }
 
